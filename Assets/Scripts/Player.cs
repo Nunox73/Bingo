@@ -97,13 +97,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Assuming 'cardNumbers' contains the numbers already sorted by range
+        // Assuming 'cardNumbers' contains the numbers already sorted by range, lets split them by colums
         int numIndex = 0;  // Tracks the current index in the sorted card numbers list
         for (numIndex = 0; numIndex <= 14; numIndex++)
         {
                 int row = 0;
                 int col = Mathf.FloorToInt(cardNumbers[numIndex]/10);
-                while (row < 2)
+                while (row <= 2)
                 {
                     if (card.GetLength(0) > row && card.GetLength(1) > col && card[row,col] < 0)
                     {
