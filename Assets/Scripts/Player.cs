@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Assuming 'cardNumbers' contains the numbers already sorted by range, lets split them by colums
+        // Assuming 'cardNumbers' contains the numbers already sorted by range, lets split them by column
         int numIndex = 0;  // Tracks the current index in the sorted card numbers list
         for (numIndex = 0; numIndex <= 14; numIndex++)
         {
@@ -119,22 +119,51 @@ public class Player : MonoBehaviour
         }
 
 
+        // Spit the numbers and spaces inside each column
+        //int numIndex = 0;  // Tracks the current index in the sorted card numbers list
+        for (numIndex = 0; numIndex <= 14; numIndex++)
+        {
+            int row = 0;
+            int col = 0;
+            while (col <= 8)
+            {
+                if (card[2, col] < 0) // Check if the 3rd row is empty ==> then we need to organize
+                {
+                    if (card[1, col] < 0) // 2nd row is empty
+                    {
+                        if (card[0, col] > 0) // no number on that column
+                        {
+                            if ((card[0, col] % 10) > 5)
+                            {
+                                card[2, col] = card[0, col];
+                                card[0, col] = -1;
+                            } else if ((card[0, col] % 10) == 5)
+                            {
+                                card[1, col] = card[0, col];
+                                card[0, col] = -1;
+                            }
+                        }
+                    } else // 2 numbers
+                    {
+                        // 2nd line
+                        if ((card[1, col] % 10) > 5)
+                        {
+                            card[2, col] = card[1, col];
+                            card[1, col] = -1;
+                        }
+                        if ((card[0, col] % 10) == 5)
+                        {
+                            card[1, col] = card[0, col];
+                            card[0, col] = -1;
+                        }
+                    }
+                }
+                col++; // Increment row
+            }
 
-    // Iterate through rows and assign sorted numbers to random columns, max 3 per range
-    //for (int row = 0; row < 3; row++)
-    //{
-    //    List<int> randomColumns = GetRandomColumns();  // Get random columns for each row (3 max per row)
-    
-    //    // Assign numbers to the columns, keeping track of the total
-    //    foreach (int col in randomColumns) 
-    //    {
-    //        // Ensure we don’t exceed the total available numbers or overflow the list
-    //        if (numIndex < cardNumbers.Count)
-    //        {
-    //            card[row, col] = cardNumbers[numIndex++];  // Assign the number and increment the index
-    //        }                
-    //    }
-    //}
+        }
+
+
 
         // Create the card UI
         CreateCardUI();
