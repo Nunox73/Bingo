@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private int[,] card = new int[3, 9];  // 3x9 Bingo card
     private bool[,] marked = new bool[3, 9];  // Tracks which numbers have been marked
     public bool HasWon = false;
+    public bool HasLine = false;
 
     public TextMeshProUGUI playerNameText;
     public GameObject cardUIGrid;
@@ -117,8 +118,6 @@ public class Player : MonoBehaviour
                 }
 
         }
-
-
         // Spit the numbers and spaces inside each column
         //int numIndex = 0;  // Tracks the current index in the sorted card numbers list
         for (numIndex = 0; numIndex <= 14; numIndex++)
@@ -167,21 +166,6 @@ public class Player : MonoBehaviour
 
         // Create the card UI
         CreateCardUI();
-    }
-
-    // Generates 5 random columns for a row
-    List<int> GetRandomColumns()
-    {
-        List<int> columns = new List<int>();
-        while (columns.Count < 5)
-        {
-            int randomColumn = Random.Range(0, 9);
-            if (!columns.Contains(randomColumn))
-            {
-                columns.Add(randomColumn);
-            }
-        }
-        return columns;
     }
 
     // Creates the card UI
@@ -242,12 +226,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Checks for win conditions (One Line, Two Lines, Full House)
-    public bool CheckForWin()
+    // Checks for win conditions (Line and Bingo)
+     public bool CheckForLine()
     {
-        int linesComplete = 0;
-
         // Check for complete lines
+        int linesComplete = 0;
         for (int row = 0; row < 3; row++)
         {
             bool lineComplete = true;
@@ -264,27 +247,39 @@ public class Player : MonoBehaviour
                 linesComplete++;
             }
         }
-
         // Check for win conditions
         if (linesComplete == 1)
         {
-            Debug.Log("Player " + PlayerID + " has a ONE LINE!");
-            HasWon = true;
+            Debug.Log("Jogador " + PlayerID + " fez LINHA!");
+            HasLine = true;
+            //BingoGameWithPlayers.playerLineWinner = PlayerID;
             return true;
         }
-        else if (linesComplete == 2)
+        return false;
+    }
+    public bool CheckForBingo()
+    {
+        int cardComplete = 0;
+        // Check for complete card
+        for (int row = 0; row < 3; row++)
         {
-            Debug.Log("Player " + PlayerID + " has TWO LINES!");
-            HasWon = true;
-            return true;
-        }
-        else if (linesComplete == 3)
-        {
-            Debug.Log("Player " + PlayerID + " has a FULL HOUSE!");
-            HasWon = true;
-            return true;
+            //bool lineComplete = true;
+            for (int col = 0; col < 9; col++)
+            {
+                if (card[row, col] != -1 && marked[row, col])
+                {
+                    cardComplete++;
+                    //break;
+                }
+            }
         }
 
+        if (cardComplete == 15)
+        {
+            Debug.Log("Jogador " + PlayerID + " fez BINGO!");
+            HasWon = true;
+            return true;
+        }
         return false;
     }
 }

@@ -9,8 +9,12 @@ public class BingoGameWithPlayers : MonoBehaviour
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
     public Text drawnNumberText; // UI text for displaying the drawn number
+    public Text txt_Line_Winner; // UI text for displaying the Line Winner
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
-    public int numberOfPlayers = 2; // Set this in the Unity inspector for the number of players
+    public int numberOfPlayers = 2; // Set the number of players
+    public int numberOfCards = 2; // Set the number of cards per player
+    public int playerLineWinner = 0; // Player that made the first line
+    public int playerBigoWinner = 0; // Player that Won the Bingo
     public GameObject playerCardPrefab; // Prefab for player cards
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
 
@@ -25,6 +29,8 @@ public class BingoGameWithPlayers : MonoBehaviour
     // Initializes the Bingo numbers
     void InitializeBingoNumbers()
     {
+        playerBigoWinner = 0;
+        playerLineWinner = 0;
         bingoNumbers.Clear();
         drawnNumbers.Clear();
 
@@ -33,8 +39,8 @@ public class BingoGameWithPlayers : MonoBehaviour
             bingoNumbers.Add(i); // Populate list with numbers from 1 to 90
         }
 
-        allDrawnNumbersText.text = "Drawn Numbers: ";
-        drawnNumberText.text = "Press to Draw!";
+        allDrawnNumbersText.text = "Números de sairam: ";
+        drawnNumberText.text = "";
     }
 
     // Generates Bingo cards for each player
@@ -72,7 +78,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             drawnNumbers.Add(drawnNumber);
 
             // Update the UI to show the drawn number
-            drawnNumberText.text = "Drawn Number: " + drawnNumber;
+            drawnNumberText.text = "Novo Número: " + drawnNumber;
             allDrawnNumbersText.text += drawnNumber + " ";
 
             // Mark the drawn number on each player's card
@@ -90,19 +96,26 @@ public class BingoGameWithPlayers : MonoBehaviour
         }
     }
 
-    // Checks for win conditions (One Line, Two Lines, Full House)
+    // Checks for win conditions ()
     void CheckWinConditions()
     {
         foreach (Player player in players)
         {
-            if (!player.HasWon)
+            
+            if (player.CheckForBingo() && playerBigoWinner == 0)
             {
-                if (player.CheckForWin())
-                {
-                    drawnNumberText.text = "Player " + player.PlayerID + " has won!";
-                    break; // Stop checking after the first winner is found
-                }
+                drawnNumberText.text = "Jogador " + player.PlayerID + " fez BINGO, Parabéns!";
+                playerBigoWinner = player.PlayerID;
+                break; // Stop checking after the first winner is found
             }
+            if (player.CheckForLine() && playerLineWinner == 0)
+            {
+                txt_Line_Winner.text = "Jogador " + player.PlayerID + " fez Linha, Parabéns!";
+                playerLineWinner = player.PlayerID;
+                break; // Stop checking after the first winner is found
+            }
+            
+
         }
     }
 
@@ -111,5 +124,6 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         InitializeBingoNumbers();
         GeneratePlayers();
+
     }
 }
