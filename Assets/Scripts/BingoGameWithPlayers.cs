@@ -39,7 +39,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             bingoNumbers.Add(i); // Populate list with numbers from 1 to 90
         }
 
-        allDrawnNumbersText.text = "Números de sairam: ";
+        allDrawnNumbersText.text = "Números que sairam: ";
         drawnNumberText.text = "";
     }
 
@@ -92,7 +92,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         }
         else
         {
-            drawnNumberText.text = "All numbers have been drawn!";
+            drawnNumberText.text = "Já sairam todos os números!";
         }
     }
 

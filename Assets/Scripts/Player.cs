@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public void InitializePlayer(int id)
     {
         PlayerID = id;
-        playerNameText.text = "Player " + PlayerID;
+        playerNameText.text = "Jogador " + PlayerID;
 
         // Generate a random Bingo card for the player
         GenerateCard();
@@ -227,7 +227,7 @@ public class Player : MonoBehaviour
     }
 
     // Checks for win conditions (Line and Bingo)
-     public bool CheckForLine()
+    public bool CheckForLine()
     {
         // Check for complete lines
         int linesComplete = 0;

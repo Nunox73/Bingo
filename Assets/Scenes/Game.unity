@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.674, y: -788}
+  m_AnchoredPosition: {x: -413.33, y: -809}
   m_SizeDelta: {x: 229.245, y: 73.366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &234960585
@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -359.877, y: -910.322}
-  m_SizeDelta: {x: 229.527, y: 65.352}
+  m_AnchoredPosition: {x: -413.33, y: -918.28}
+  m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289938980
 MonoBehaviour:
@@ -781,7 +781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.444, y: -918.33}
+  m_AnchoredPosition: {x: 4.742, y: -918.28}
   m_SizeDelta: {x: 202.888, y: 49.336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631215278
@@ -1324,7 +1324,7 @@ GameObject:
   - component: {fileID: 1045986190}
   - component: {fileID: 1045986192}
   - component: {fileID: 1045986191}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: img_bingo_card_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1347,8 +1347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: -247}
-  m_SizeDelta: {x: 598.65, y: 242.809}
+  m_AnchoredPosition: {x: 0.000015736, y: 624}
+  m_SizeDelta: {x: 946, y: 560}
   m_Pivot: {x: 0.5, y: 0.4999994}
 --- !u!114 &1045986191
 MonoBehaviour:
@@ -1387,7 +1387,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045986189}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &1072234000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,8 +1675,8 @@ MonoBehaviour:
   drawnNumberText: {fileID: 1002970884}
   txt_Line_Winner: {fileID: 1010531415}
   allDrawnNumbersText: {fileID: 1603020898}
-  numberOfPlayers: 2
-  numberOfCards: 2
+  numberOfPlayers: 4
+  numberOfCards: 1
   playerLineWinner: 0
   playerBigoWinner: 0
   playerCardPrefab: {fileID: 8841855840386925772, guid: dce6618e0912cd84ca66b2ef7310ef55, type: 3}
@@ -1717,8 +1717,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -120.54996, y: 44.000023}
-  m_SizeDelta: {x: 241.09998, y: 82.349976}
+  m_AnchoredPosition: {x: -120.54996, y: 59.308}
+  m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.73126817}
 --- !u!114 &1380958277
 MonoBehaviour:
