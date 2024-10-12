@@ -18,8 +18,6 @@ public class BingoGameWithPlayers : MonoBehaviour
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
     public GameObject gameCanvas;
     
-
-    //Timmer
     [Header("Winner Settings")]
     public int playerLineWinner = 0; // Player that made the first line
     public int playerBigoWinner = 0; // Player that Won the Bingo
@@ -127,7 +125,11 @@ public class BingoGameWithPlayers : MonoBehaviour
             // Mark the drawn number on each player's card
             foreach (Player player in players)
             {
-                player.MarkNumber(drawnNumber);
+                if (player.PlayerID > 1)
+                {
+                    player.MarkNumber(drawnNumber);
+                }
+                
             }
 
             // Check for a win condition after each number is drawn
