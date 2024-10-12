@@ -200,6 +200,8 @@ public class Player : MonoBehaviour
                     else
                     {
                         numberText.text = card[row, col].ToString();  // Set the number
+ //                       Image imagem = newCardNumber.transform.Find("White Ball").GetComponent<Image>(); //newCardNumber.GetComponentInChildren<Image>();
+ //                       imagem.enabled = false;
                     }
 
                     // Store the text reference for further use (like marking numbers)

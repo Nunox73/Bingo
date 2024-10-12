@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;  // Required for scene management
+using TMPro;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
@@ -9,14 +11,29 @@ public class BingoGameWithPlayers : MonoBehaviour
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
     public Text drawnNumberText; // UI text for displaying the drawn number
-    public Text txt_Line_Winner; // UI text for displaying the Line Winner
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
-    public int numberOfPlayers = 2; // Set the number of players
-    public int numberOfCards = 2; // Set the number of cards per player
-    public int playerLineWinner = 0; // Player that made the first line
-    public int playerBigoWinner = 0; // Player that Won the Bingo
+    public int numberOfPlayers = 3; // Set the number of players
+    public int numberOfCards = 1; // Set the number of cards per player
     public GameObject playerCardPrefab; // Prefab for player cards
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
+    public GameObject gameCanvas;
+    
+
+    //Timmer
+    [Header("Winner Settings")]
+    public int playerLineWinner = 0; // Player that made the first line
+    public int playerBigoWinner = 0; // Player that Won the Bingo
+    public Text txt_Line_Winner; // UI text for displaying the Line Winner
+    public GameObject winnerCanvas;
+    public Text txt_Reward;
+    public Text txt_Name;
+
+    [Header("Timmer Settings")]
+    public float timeRemaining = 5f;  // Set initial time 
+    public bool timerIsRunning = false;
+    public TextMeshProUGUI timerText;  // Assign your TextMeshPro UI element
+
+
 
     private List<Player> players = new List<Player>(); // List of players
 
@@ -24,6 +41,32 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         InitializeBingoNumbers(); // Initialize Bingo numbers
         GeneratePlayers(); // Generate players and their cards
+        winnerCanvas.SetActive(false);
+        gameCanvas.SetActive(true);
+    }
+    void Update()
+    {
+        // Check if the timer is running
+        if (timerIsRunning)
+        {
+            // Check if there's still time remaining
+            if (timeRemaining > 0)
+            {
+                // Reduce the remaining time by the time since the last frame
+                timeRemaining -= Time.deltaTime;
+
+                // Update the timer UI (optional)
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+                winnerCanvas.SetActive(false);
+                gameCanvas.SetActive(true);
+            }
+        }
     }
 
     // Initializes the Bingo numbers
@@ -78,7 +121,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             drawnNumbers.Add(drawnNumber);
 
             // Update the UI to show the drawn number
-            drawnNumberText.text = "Novo Número: " + drawnNumber;
+            drawnNumberText.text = "" + drawnNumber;
             allDrawnNumbersText.text += drawnNumber + " ";
 
             // Mark the drawn number on each player's card
@@ -106,12 +149,22 @@ public class BingoGameWithPlayers : MonoBehaviour
             {
                 drawnNumberText.text = "Jogador " + player.PlayerID + " fez BINGO, Parabéns!";
                 playerBigoWinner = player.PlayerID;
+                txt_Name.text = "Jogador " + player.PlayerID;
+                txt_Reward.text = "Bingo";
+                winnerCanvas.SetActive(true);
+                gameCanvas.SetActive(false);
+                timerIsRunning = true;
                 break; // Stop checking after the first winner is found
             }
             if (player.CheckForLine() && playerLineWinner == 0)
             {
-                txt_Line_Winner.text = "Jogador " + player.PlayerID + " fez Linha, Parabéns!";
+                txt_Line_Winner.text = "Jogador " + player.PlayerID + " fez Linha";
                 playerLineWinner = player.PlayerID;
+                txt_Name.text = "Jogador " + player.PlayerID;
+                txt_Reward.text = "Linha";
+                winnerCanvas.SetActive(true);
+                gameCanvas.SetActive(false);
+                timerIsRunning = true;
                 break; // Stop checking after the first winner is found
             }
             
@@ -125,5 +178,19 @@ public class BingoGameWithPlayers : MonoBehaviour
         InitializeBingoNumbers();
         GeneratePlayers();
 
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;  // Optional: Adjust the time so the display doesn't show 00:00 too early
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);  // Divide by 60 to get minutes
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);  // Modulus operator to get seconds
+
+        // Update the text (if using TextMeshPro)
+        if (timerText != null)
+        {
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
     }
 }
