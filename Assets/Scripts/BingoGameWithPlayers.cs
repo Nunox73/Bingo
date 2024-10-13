@@ -16,6 +16,9 @@ public class BingoGameWithPlayers : MonoBehaviour
     public GameObject playerCardPrefab; // Prefab for player cards
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
     public GameObject gameCanvas;
+    public GameObject btn_play;
+    public GameObject btn_pause;
+
 
     [Header("Drawn Settings")]
     public Text drawnNumberText; // UI text for displaying the drawn number
@@ -225,6 +228,9 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         InitializeBingoNumbers();
         GeneratePlayers();
+        txt_Bingo_Winner.text = "";
+        txt_Line_Winner.text = "";
+        drawnTimerIsRunning = false;
 
     }
 
@@ -290,6 +296,31 @@ public class BingoGameWithPlayers : MonoBehaviour
             }
 
         }
+    }
+
+    public void btn_Start()
+    {
+        
+        if (drawnTimerRemaining == 5)
+        {
+            DrawBingoNumber();
+        } else
+        {
+            drawnTimerIsRunning = true;
+            btn_no.SetActive(true);
+            btn_yes.SetActive(true);
+        }
+        btn_play.SetActive(false);
+        btn_pause.SetActive(true);
+    }
+
+    public void btn_Pause()
+    {
+        drawnTimerIsRunning = false;
+        btn_no.SetActive(false);
+        btn_yes.SetActive(false);
+        btn_play.SetActive(true);
+        btn_pause.SetActive(false);
     }
 
 }
