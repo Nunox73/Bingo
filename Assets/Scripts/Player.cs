@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             List<int> range = new List<int>();
-            for (int j = i * 10 + 1; j <= i * 10 + 10 && j <= 90; j++) // Creates ranges 1-9, 10-19, ..., 80-90
+            for (int j = i * 10 + 1; j <= i * 10 + 10 && j < 90; j++) // Creates ranges 1-9, 10-19, ..., 80-90
             {
                 range.Add(j);
             }
@@ -162,10 +162,29 @@ public class Player : MonoBehaviour
 
         }
 
+        // Validate the numbers in the card
+        int numberInCard = 0;
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 9; col++)
+            {
+
+                if (card[row, col] == -1)
+                {
+
+                }
+                else
+                {
+                    numberInCard++;
+                }
+            }
+
+        }
 
 
-        // Create the card UI
-        CreateCardUI();
+
+            // Create the card UI
+            CreateCardUI();
     }
 
     // Creates the card UI
