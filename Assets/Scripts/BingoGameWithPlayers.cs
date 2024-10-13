@@ -26,8 +26,9 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     [Header("Winner Settings")]
     public int playerLineWinner = 0; // Player that made the first line
-    public int playerBigoWinner = 0; // Player that Won the Bingo
+    public int playerBingoWinner = 0; // Player that Won the Bingo
     public Text txt_Line_Winner; // UI text for displaying the Line Winner
+    public Text txt_Bingo_Winner; // UI text for displaying the Line Winner
     public GameObject winnerCanvas;
     public Text txt_Reward;
     public Text txt_Name;
@@ -70,15 +71,15 @@ public class BingoGameWithPlayers : MonoBehaviour
             else
             {
                 Debug.Log("Time has run out!");
-                timeRemaining = 0;
                 timerIsRunning = false;
+                timeRemaining = 5; // Reset the winner timer time
                 winnerCanvas.SetActive(false);
                 gameCanvas.SetActive(true);
             }
         }
 
         // Check if the Drawn timer is running
-        if (drawnTimerIsRunning)
+        if (drawnTimerIsRunning && !timerIsRunning)
         {           
             // Check if there's still time remaining
             if (drawnTimerRemaining > 0)
@@ -91,7 +92,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             }
             else
             {
-                Debug.Log("Drawn Time has run out!");
+                //Debug.Log("Drawn Time has run out!");
                 ResetDrawnTimer();
                 DrawBingoNumber();
             }
@@ -108,7 +109,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     // Initializes the Bingo numbers
     void InitializeBingoNumbers()
     {
-        playerBigoWinner = 0;
+        playerBingoWinner = 0;
         playerLineWinner = 0;
         bingoNumbers.Clear();
         drawnNumbers.Clear();
@@ -148,7 +149,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     // Draws a random Bingo number
     public void DrawBingoNumber()
     {
-        if (bingoNumbers.Count > 0)
+        if (bingoNumbers.Count > 0 && playerBingoWinner == 0)
         {
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];
@@ -165,25 +166,20 @@ public class BingoGameWithPlayers : MonoBehaviour
             btn_yes.SetActive(true);
 
             //Enable Timer
+            ResetDrawnTimer();
             drawnTimerIsRunning = true;
            
-
-            // Mark the drawn number on each player's card
-            foreach (Player player in players)
-            {
-                if (player.PlayerID > 1)
-                {
-                    player.MarkNumber(drawnNumber);
-                }
-                
-            }
-
-            // Check for a win condition after each number is drawn
-            CheckWinConditions();
         }
         else
         {
-            drawnNumberText.text = "Já sairam todos os números!";
+            if (playerBingoWinner == 0)
+            {
+                drawnNumberText.text = "BINGO";
+            } else
+            {
+                drawnNumberText.text = "Já sairam todos os números!";
+            }
+            
         }
     }
 
@@ -193,15 +189,16 @@ public class BingoGameWithPlayers : MonoBehaviour
         foreach (Player player in players)
         {
             
-            if (player.CheckForBingo() && playerBigoWinner == 0)
+            if (player.CheckForBingo() && playerBingoWinner == 0)
             {
-                drawnNumberText.text = "Jogador " + player.PlayerID + " fez BINGO, Parabéns!";
-                playerBigoWinner = player.PlayerID;
+                txt_Bingo_Winner.text = "Jogador " + player.PlayerID + " fez BINGO";
+                playerBingoWinner = player.PlayerID;
                 txt_Name.text = "Jogador " + player.PlayerID;
                 txt_Reward.text = "Bingo";
                 winnerCanvas.SetActive(true);
                 gameCanvas.SetActive(false);
                 timerIsRunning = true;
+                drawnTimerIsRunning = false;
                 break; // Stop checking after the first winner is found
             }
             if (player.CheckForLine() && playerLineWinner == 0)
@@ -248,4 +245,48 @@ public class BingoGameWithPlayers : MonoBehaviour
         }
 
     }
+
+    // Check Player 1 number
+    public void YesButton()
+    {
+        foreach (Player player in players)
+        {
+            if (player.PlayerID == 1)
+            {
+                player.MarkNumber(int.Parse(drawnNumberText.text));
+            }
+
+        }
+        // Validate all the other players cards numbers
+        markNumbers();
+        // Check Winning Conditions
+        CheckWinConditions();
+        // Drawn a new number
+        DrawBingoNumber();
+    }
+
+    public void NoButton()
+    {
+        // Validate all the other players cards numbers
+        markNumbers();
+        // Check Winning Conditions
+        CheckWinConditions();
+        // Drawn a new number
+        DrawBingoNumber();
+    }
+
+
+    public void markNumbers()
+    {
+        // Mark the drawn number on each player's card
+        foreach (Player player in players)
+        {
+            if (player.PlayerID > 1)
+            {
+                player.MarkNumber(int.Parse(drawnNumberText.text));
+            }
+
+        }
+    }
+
 }

@@ -250,7 +250,7 @@ public class Player : MonoBehaviour
             }
         }
         // Check for win conditions
-        if (linesComplete == 1)
+        if (linesComplete == 1 && !HasLine)
         {
             Debug.Log("Jogador " + PlayerID + " fez LINHA!");
             HasLine = true;
