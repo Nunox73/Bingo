@@ -7,7 +7,7 @@ using TMPro;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
-    private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-90)
+    private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-89)
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
     
@@ -114,9 +114,9 @@ public class BingoGameWithPlayers : MonoBehaviour
         bingoNumbers.Clear();
         drawnNumbers.Clear();
 
-        for (int i = 1; i <= 90; i++)
+        for (int i = 1; i < 90; i++)
         {
-            bingoNumbers.Add(i); // Populate list with numbers from 1 to 90
+            bingoNumbers.Add(i); // Populate list with numbers from 1 to 89
         }
 
         allDrawnNumbersText.text = "Números que sairam: ";
@@ -172,9 +172,12 @@ public class BingoGameWithPlayers : MonoBehaviour
         }
         else
         {
-            if (playerBingoWinner == 0)
+            if (playerBingoWinner > 0)
             {
                 drawnNumberText.text = "BINGO";
+                DrawnTimerText.text = "";
+                btn_no.SetActive(false);
+                btn_yes.SetActive(false);
             } else
             {
                 drawnNumberText.text = "Já sairam todos os números!";
