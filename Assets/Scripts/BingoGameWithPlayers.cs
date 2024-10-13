@@ -10,14 +10,20 @@ public class BingoGameWithPlayers : MonoBehaviour
     private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-90)
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
-    public Text drawnNumberText; // UI text for displaying the drawn number
-    public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
+    
     public int numberOfPlayers = 3; // Set the number of players
     public int numberOfCards = 1; // Set the number of cards per player
     public GameObject playerCardPrefab; // Prefab for player cards
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
     public GameObject gameCanvas;
-    
+
+    [Header("Drawn Settings")]
+    public Text drawnNumberText; // UI text for displaying the drawn number
+    public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
+    public float drawnTimerRemaining = 10f;  // Set initial time
+    public bool drawnTimerIsRunning = false;
+    public TextMeshProUGUI DrawnTimerText;  // Assign your TextMeshPro UI element
+
     [Header("Winner Settings")]
     public int playerLineWinner = 0; // Player that made the first line
     public int playerBigoWinner = 0; // Player that Won the Bingo
@@ -26,12 +32,14 @@ public class BingoGameWithPlayers : MonoBehaviour
     public Text txt_Reward;
     public Text txt_Name;
 
-    [Header("Timmer Settings")]
+    [Header("Winner Timmer Settings")]
     public float timeRemaining = 5f;  // Set initial time 
     public bool timerIsRunning = false;
     public TextMeshProUGUI timerText;  // Assign your TextMeshPro UI element
 
-
+    [Header("Player 1 Settings")]
+    public GameObject btn_yes;
+    public GameObject btn_no;
 
     private List<Player> players = new List<Player>(); // List of players
 
@@ -41,10 +49,13 @@ public class BingoGameWithPlayers : MonoBehaviour
         GeneratePlayers(); // Generate players and their cards
         winnerCanvas.SetActive(false);
         gameCanvas.SetActive(true);
+        // Disable Player 1 buttons
+        btn_no.SetActive(false);
+        btn_yes.SetActive(false);
     }
     void Update()
     {
-        // Check if the timer is running
+        // Check if the Winner timer is running
         if (timerIsRunning)
         {
             // Check if there's still time remaining
@@ -65,6 +76,33 @@ public class BingoGameWithPlayers : MonoBehaviour
                 gameCanvas.SetActive(true);
             }
         }
+
+        // Check if the Drawn timer is running
+        if (drawnTimerIsRunning)
+        {           
+            // Check if there's still time remaining
+            if (drawnTimerRemaining > 0)
+            {
+                // Reduce the remaining time by the time since the last frame
+                drawnTimerRemaining -= Time.deltaTime;
+
+                // Update the timer UI (optional)
+                DisplayTime(drawnTimerRemaining);
+            }
+            else
+            {
+                Debug.Log("Drawn Time has run out!");
+                ResetDrawnTimer();
+                DrawBingoNumber();
+            }
+        }
+    }
+
+    // Resets Drawn Timer
+    void ResetDrawnTimer()
+    {
+        drawnTimerIsRunning = false;
+        drawnTimerRemaining = 10;
     }
 
     // Initializes the Bingo numbers
@@ -121,6 +159,14 @@ public class BingoGameWithPlayers : MonoBehaviour
             // Update the UI to show the drawn number
             drawnNumberText.text = "" + drawnNumber;
             allDrawnNumbersText.text += drawnNumber + " ";
+
+            // Enable Player 1 buttons
+            btn_no.SetActive(true);
+            btn_yes.SetActive(true);
+
+            //Enable Timer
+            drawnTimerIsRunning = true;
+           
 
             // Mark the drawn number on each player's card
             foreach (Player player in players)
@@ -190,9 +236,16 @@ public class BingoGameWithPlayers : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);  // Modulus operator to get seconds
 
         // Update the text (if using TextMeshPro)
-        if (timerText != null)
+        if (timerIsRunning)
         {
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerText != null)
+            {
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+        } else if (drawnTimerIsRunning)
+        {
+            DrawnTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
+
     }
 }
