@@ -169,8 +169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: 905.4301, y: 356.6323}
+  m_AnchoredPosition: {x: 0.000005722, y: 0.0000076294}
+  m_SizeDelta: {x: 1065.3635, y: 484.9738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3848636933919119220
 MonoBehaviour:
@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 0
   HasWon: 0
+  HasLine: 0
   playerNameText: {fileID: 1217356332694173465}
   cardUIGrid: {fileID: 4310179372702640479}
   cardNumberPrefab: {fileID: 9192013818172315120, guid: 5c87e02798718c84e814dce3cac9a95d, type: 3}
@@ -463,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8287887618369921339, guid: b6b9997491494a140a33666953282d44, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 286.2065
+      value: 395.7904
       objectReference: {fileID: 0}
     - target: {fileID: 8287887618369921339, guid: b6b9997491494a140a33666953282d44, type: 3}
       propertyPath: m_LocalScale.x
@@ -511,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8287887618369921339, guid: b6b9997491494a140a33666953282d44, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 156.12822
+      value: 210.92018
       objectReference: {fileID: 0}
     - target: {fileID: 8287887618369921339, guid: b6b9997491494a140a33666953282d44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
