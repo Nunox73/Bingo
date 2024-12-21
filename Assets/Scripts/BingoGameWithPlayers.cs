@@ -122,7 +122,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             bingoNumbers.Add(i); // Populate list with numbers from 1 to 89
         }
 
-        allDrawnNumbersText.text = "Números que sairam: ";
+        allDrawnNumbersText.text = "Nï¿½meros que sairam: ";
         drawnNumberText.text = "";
     }
 
@@ -183,7 +183,7 @@ public class BingoGameWithPlayers : MonoBehaviour
                 btn_yes.SetActive(false);
             } else
             {
-                drawnNumberText.text = "Já sairam todos os números!";
+                drawnNumberText.text = "Jï¿½ sairam todos os nï¿½meros!";
             }
             
         }
@@ -205,6 +205,7 @@ public class BingoGameWithPlayers : MonoBehaviour
                 gameCanvas.SetActive(false);
                 timerIsRunning = true;
                 drawnTimerIsRunning = false;
+                btn_pause.SetActive(false);
                 break; // Stop checking after the first winner is found
             }
             if (player.CheckForLine() && playerLineWinner == 0)
@@ -231,7 +232,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         txt_Bingo_Winner.text = "";
         txt_Line_Winner.text = "";
         drawnTimerIsRunning = false;
-
+        btn_play.SetActive(true);
     }
 
     void DisplayTime(float timeToDisplay)
