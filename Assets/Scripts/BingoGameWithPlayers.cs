@@ -7,6 +7,8 @@ using TMPro;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
+    
+    
     private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-89)
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
@@ -19,6 +21,10 @@ public class BingoGameWithPlayers : MonoBehaviour
     public GameObject btn_play;
     public GameObject btn_pause;
 
+    [Header("Sounds")]
+    public AudioSource NewNumberSound;
+    public AudioSource CorrectNumber;
+    public AudioSource WrongNumber;
 
     [Header("Drawn Settings")]
     public Text drawnNumberText; // UI text for displaying the drawn number
@@ -149,11 +155,16 @@ public class BingoGameWithPlayers : MonoBehaviour
         }
     }
 
+   
     // Draws a random Bingo number
     public void DrawBingoNumber()
     {
         if (bingoNumbers.Count > 0 && playerBingoWinner == 0)
         {
+           
+            // Play Sound
+            NewNumberSound.Play();
+
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];
 
@@ -264,13 +275,14 @@ public class BingoGameWithPlayers : MonoBehaviour
             if (player.PlayerID == 1)
             {
                 player.MarkNumber(int.Parse(drawnNumberText.text));
+                
             }
 
         }
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions
-        CheckWinConditions();
+        CheckWinConditions();      
         // Drawn a new number
         DrawBingoNumber();
     }

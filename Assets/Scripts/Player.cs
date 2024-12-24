@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         //int numIndex = 0;  // Tracks the current index in the sorted card numbers list
         for (numIndex = 0; numIndex <= 14; numIndex++)
         {
-            int row = 0;
+            //int row = 0;
             int col = 0;
             while (col <= 8)
             {
