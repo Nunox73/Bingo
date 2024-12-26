@@ -61,7 +61,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         gameCanvas.SetActive(true);
         // Disable Player 1 buttons
         btn_no.SetActive(false);
-        btn_yes.SetActive(false);
+        //btn_yes.SetActive(false);
     }
     void Update()
     {
@@ -177,7 +177,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
             // Enable Player 1 buttons
             btn_no.SetActive(true);
-            btn_yes.SetActive(true);
+            //btn_yes.SetActive(true);
 
             //Enable Timer
             ResetDrawnTimer();
@@ -191,7 +191,7 @@ public class BingoGameWithPlayers : MonoBehaviour
                 drawnNumberText.text = "BINGO";
                 DrawnTimerText.text = "";
                 btn_no.SetActive(false);
-                btn_yes.SetActive(false);
+                //btn_yes.SetActive(false);
             } else
             {
                 drawnNumberText.text = "J� sairam todos os n�meros!";
@@ -321,7 +321,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         {
             drawnTimerIsRunning = true;
             btn_no.SetActive(true);
-            btn_yes.SetActive(true);
+            //btn_yes.SetActive(true);
         }
         btn_play.SetActive(false);
         btn_pause.SetActive(true);
@@ -331,7 +331,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         drawnTimerIsRunning = false;
         btn_no.SetActive(false);
-        btn_yes.SetActive(false);
+        //btn_yes.SetActive(false);
         btn_play.SetActive(true);
         btn_pause.SetActive(false);
     }

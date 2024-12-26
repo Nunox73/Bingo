@@ -47,23 +47,6 @@ public class Ball_Button : MonoBehaviour
         }
 
         
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-
-    }
-
-    // This method will be called when the button is clicked
-    public void OnButtonClick()
-    {
-
-        if (yesButton == null)
-        {
-
             // Find the Yes Button GameObject by name
             GameObject buttonObject = GameObject.Find("btn_yes");
 
@@ -86,6 +69,24 @@ public class Ball_Button : MonoBehaviour
             {
                 Debug.LogError("GameObject with the specified name not found.");
             }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
+
+    }
+
+    // This method will be called when the button is clicked
+    public void OnButtonClick()
+    {
+
+        if (yesButton == null)
+        {
+
+
         }
         //Debug.Log("Button was clicked!");
         if (drawnNumber.text == TextNumber.text) {
