@@ -14,6 +14,7 @@ public class Ball_Button : MonoBehaviour
 
     [Header("Sounds")]
     public AudioSource CorrectNumber;
+    public AudioSource IncorrectNumber;
 
     [Header("Number")]
     public TextMeshProUGUI TextNumber;
@@ -83,16 +84,13 @@ public class Ball_Button : MonoBehaviour
     public void OnButtonClick()
     {
 
-        if (yesButton == null)
-        {
-
-
-        }
         //Debug.Log("Button was clicked!");
         if (drawnNumber.text == TextNumber.text) {
                 CorrectNumber.Play();
                 yesButton.onClick.Invoke();
                 
+        } else {
+            IncorrectNumber.Play();
         }
     }
 
