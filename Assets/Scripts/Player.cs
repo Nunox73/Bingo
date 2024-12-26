@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
 
     private List<TextMeshProUGUI> cardNumberTexts = new List<TextMeshProUGUI>();
 
+    [Header("Sounds")]
+    public AudioSource CorrectNumber;
+    public AudioSource WrongNumber;
+
     // Initializes the player with a Bingo card
     public void InitializePlayer(int id)
     {
@@ -242,6 +246,7 @@ public class Player : MonoBehaviour
                     marked[row, col] = true;
                     int index = row * 9 + col;
                     cardNumberTexts[index].color = Color.red;  // Mark the number
+                    
                 }
             }
         }

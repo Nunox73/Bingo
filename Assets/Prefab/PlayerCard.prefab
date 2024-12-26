@@ -190,6 +190,8 @@ MonoBehaviour:
   playerNameText: {fileID: 1217356332694173465}
   cardUIGrid: {fileID: 4310179372702640479}
   cardNumberPrefab: {fileID: 9192013818172315120, guid: 5c87e02798718c84e814dce3cac9a95d, type: 3}
+  CorrectNumber: {fileID: 0}
+  WrongNumber: {fileID: 0}
 --- !u!1001 &166940257910998534
 PrefabInstance:
   m_ObjectHideFlags: 0
