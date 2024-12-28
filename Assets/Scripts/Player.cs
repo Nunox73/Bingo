@@ -11,21 +11,19 @@ public class Player : MonoBehaviour
     public bool HasWon = false;
     public bool HasLine = false;
 
-    public TextMeshProUGUI playerNameText;
+    
+    public TextMeshProUGUI playerNameText; // Name of the Player in Scene Game
+    public TextMeshProUGUI txt_player_name; // Name of the Player in Player Card Prefab
     public GameObject cardUIGrid;
     public GameObject cardNumberPrefab;
 
     private List<TextMeshProUGUI> cardNumberTexts = new List<TextMeshProUGUI>();
 
-    [Header("Sounds")]
-    public AudioSource CorrectNumber;
-    public AudioSource WrongNumber;
-
     // Initializes the player with a Bingo card
     public void InitializePlayer(int id)
     {
         PlayerID = id;
-        playerNameText.text = "Jogador " + PlayerID;
+        //playerNameText.text = "Jogador " + PlayerID;
 
         // Generate a random Bingo card for the player
         GenerateCard();
@@ -308,4 +306,37 @@ public class Player : MonoBehaviour
         }
         return false;
     }
+
+void Start()
+    {
+        
+        // Find the Drawn Number GameObject by name
+        // GameObject textObject = GameObject.Find("txt_Player_Name");
+
+        // if (textObject != null)
+        // {
+        //     // Get the TextMeshProUGUI component
+        //     playerNameText = textObject.GetComponent<TextMeshProUGUI>();
+            
+
+        //     if (playerNameText != null)
+        //     {
+        //         txt_player_name.text = playerNameText.text;
+        //         //Debug.Log("Found TextMeshProUGUI: " + drawnNumber.text);
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("txt_Player_Name component not found on the GameObject.");
+        //     }
+        // }
+        // else
+        // {
+        //     Debug.LogError("GameObject with the specified name not found.");
+        // }
+
+        txt_player_name.text = PlayerPrefs.GetString("PlayerName");
+        
+
+    }
+
 }

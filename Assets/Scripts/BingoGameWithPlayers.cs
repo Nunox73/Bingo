@@ -21,6 +21,10 @@ public class BingoGameWithPlayers : MonoBehaviour
     public GameObject btn_play;
     public GameObject btn_pause;
 
+    [Header("Player 1")]
+    public int Player1Points = 0;
+    public TextMeshProUGUI Player1Name;
+
     [Header("Sounds")]
     public AudioSource NewNumberSound;
     public AudioSource CorrectNumber;
