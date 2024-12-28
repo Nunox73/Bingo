@@ -309,30 +309,6 @@ public class Player : MonoBehaviour
 
 void Start()
     {
-        
-        // Find the Drawn Number GameObject by name
-        // GameObject textObject = GameObject.Find("txt_Player_Name");
-
-        // if (textObject != null)
-        // {
-        //     // Get the TextMeshProUGUI component
-        //     playerNameText = textObject.GetComponent<TextMeshProUGUI>();
-            
-
-        //     if (playerNameText != null)
-        //     {
-        //         txt_player_name.text = playerNameText.text;
-        //         //Debug.Log("Found TextMeshProUGUI: " + drawnNumber.text);
-        //     }
-        //     else
-        //     {
-        //         Debug.LogError("txt_Player_Name component not found on the GameObject.");
-        //     }
-        // }
-        // else
-        // {
-        //     Debug.LogError("GameObject with the specified name not found.");
-        // }
 
         txt_player_name.text = PlayerPrefs.GetString("PlayerName");
         
