@@ -8,11 +8,13 @@ public class SceneManagerScript : MonoBehaviour
 {
    
     public TMP_InputField Player_Name;
+    public TextMeshProUGUI Player_Score;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player_Name.text = PlayerPrefs.GetString("PlayerName");
+        Player_Name.text = PlayerPrefs.GetString("Player1Name");
+        Player_Score.text = PlayerPrefs.GetInt("Player1Score").ToString();
     }
 
     // Update is called once per frame

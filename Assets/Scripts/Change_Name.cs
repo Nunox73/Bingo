@@ -31,7 +31,7 @@ public class Change_Name : MonoBehaviour
     {
 
         // Saving data
-        PlayerPrefs.SetString("PlayerName", Player_Name.text);
+        PlayerPrefs.SetString("Player1Name", Player_Name.text);
         PlayerPrefs.Save();
 
 

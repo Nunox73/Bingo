@@ -182,9 +182,6 @@ public class Player : MonoBehaviour
             }
 
         }
-
-
-
             // Create the card UI
             CreateCardUI();
     }
@@ -310,7 +307,7 @@ public class Player : MonoBehaviour
 void Start()
     {
 
-        txt_player_name.text = PlayerPrefs.GetString("PlayerName");
+        txt_player_name.text = PlayerPrefs.GetString("Player1Name");
         
 
     }

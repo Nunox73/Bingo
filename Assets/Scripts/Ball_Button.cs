@@ -88,6 +88,8 @@ public class Ball_Button : MonoBehaviour
         if (drawnNumber.text == TextNumber.text) {
                 CorrectNumber.Play();
                 yesButton.onClick.Invoke();
+                PlayerPrefs.SetInt("Player1Score", PlayerPrefs.GetInt("Player1Score") + 1);
+                PlayerPrefs.Save();
                 
         } else {
             IncorrectNumber.Play();

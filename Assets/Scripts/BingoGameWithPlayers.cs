@@ -24,6 +24,9 @@ public class BingoGameWithPlayers : MonoBehaviour
     [Header("Player 1")]
     public int Player1Points = 0;
     public TextMeshProUGUI Player1Name;
+    public TextMeshProUGUI PlayerScore;
+
+
 
     [Header("Sounds")]
     public AudioSource NewNumberSound;
@@ -157,6 +160,12 @@ public class BingoGameWithPlayers : MonoBehaviour
                 players.Add(newPlayer);
             }
         }
+        for (int i = 1; i < numberOfPlayers; i++)
+        {
+
+            
+        }
+
     }
 
    
@@ -168,6 +177,8 @@ public class BingoGameWithPlayers : MonoBehaviour
            
             // Play Sound
             NewNumberSound.Play();
+
+            PlayerScore.text = PlayerPrefs.GetInt("Player1Score").ToString();
 
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];
