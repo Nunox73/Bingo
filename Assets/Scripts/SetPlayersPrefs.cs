@@ -18,6 +18,8 @@ public class SetPlayersPrefs : MonoBehaviour
         PlayerPrefs.SetInt("Player1Score", 0);
         PlayerPrefs.SetInt("Player2Score", 0);
         PlayerPrefs.SetInt("Player3Score", 0);
+        PlayerPrefs.SetInt("Linha",0);
+        PlayerPrefs.SetInt("Bingo",0);
         PlayerPrefs.Save();
 
         Player_Name.text = PlayerPrefs.GetString("Player1Name");

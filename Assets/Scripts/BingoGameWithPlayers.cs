@@ -19,14 +19,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
     public GameObject gameCanvas;
     public GameObject btn_play;
-    public GameObject btn_pause;
-
-    [Header("Player 1")]
-    public int Player1Points = 0;
-    public TextMeshProUGUI Player1Name;
-    public TextMeshProUGUI PlayerScore;
-
-
+    public GameObject btn_pause; 
 
     [Header("Sounds")]
     public AudioSource NewNumberSound;
@@ -54,9 +47,10 @@ public class BingoGameWithPlayers : MonoBehaviour
     public bool timerIsRunning = false;
     public TextMeshProUGUI timerText;  // Assign your TextMeshPro UI element
 
-    [Header("Player 1 Settings")]
+    [Header("Buttons")]
     public GameObject btn_yes;
     public GameObject btn_no;
+    public Button ScoreRefreshButton;
 
     private List<Player> players = new List<Player>(); // List of players
 
@@ -68,7 +62,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         gameCanvas.SetActive(true);
         // Disable Player 1 buttons
         btn_no.SetActive(false);
-        //btn_yes.SetActive(false);
+        
     }
     void Update()
     {
@@ -105,10 +99,12 @@ public class BingoGameWithPlayers : MonoBehaviour
 
                 // Update the timer UI (optional)
                 DisplayTime(drawnTimerRemaining);
+                ScoreRefreshButton.onClick.Invoke();
             }
             else
             {
                 //Debug.Log("Drawn Time has run out!");
+                NoButton();
                 ResetDrawnTimer();
                 DrawBingoNumber();
             }
@@ -178,8 +174,6 @@ public class BingoGameWithPlayers : MonoBehaviour
             // Play Sound
             NewNumberSound.Play();
 
-            PlayerScore.text = PlayerPrefs.GetInt("Player1Score").ToString();
-
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];
 
@@ -192,7 +186,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
             // Enable Player 1 buttons
             btn_no.SetActive(true);
-            //btn_yes.SetActive(true);
+            
 
             //Enable Timer
             ResetDrawnTimer();
@@ -206,7 +200,7 @@ public class BingoGameWithPlayers : MonoBehaviour
                 drawnNumberText.text = "BINGO";
                 DrawnTimerText.text = "";
                 btn_no.SetActive(false);
-                //btn_yes.SetActive(false);
+                ScoreRefreshButton.onClick.Invoke();
             } else
             {
                 drawnNumberText.text = "J� sairam todos os n�meros!";

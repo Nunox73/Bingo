@@ -240,7 +240,11 @@ public class Player : MonoBehaviour
                 {
                     marked[row, col] = true;
                     int index = row * 9 + col;
-                    cardNumberTexts[index].color = Color.red;  // Mark the number
+                    if (cardNumberTexts[index].color != Color.red) {
+                        cardNumberTexts[index].color = Color.red;  // Mark the number
+                        PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score")+1);
+                        PlayerPrefs.Save();
+                    }
                     
                 }
             }
@@ -272,7 +276,14 @@ public class Player : MonoBehaviour
         if (linesComplete == 1 && !HasLine)
         {
             Debug.Log("Jogador " + PlayerID + " fez LINHA!");
+            
             HasLine = true;
+            if (PlayerPrefs.GetInt("Linha") == 0) {
+                PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") + 4);
+                PlayerPrefs.SetInt("Linha",1);
+                PlayerPrefs.Save();
+            }
+            
             //BingoGameWithPlayers.playerLineWinner = PlayerID;
             return true;
         }
@@ -299,6 +310,11 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Jogador " + PlayerID + " fez BINGO!");
             HasWon = true;
+            
+                PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") + 9);
+                PlayerPrefs.SetInt("Bingo",1);
+                PlayerPrefs.Save();
+            
             return true;
         }
         return false;
@@ -306,10 +322,7 @@ public class Player : MonoBehaviour
 
 void Start()
     {
-
         txt_player_name.text = PlayerPrefs.GetString("Player1Name");
-        
-
     }
 
 }

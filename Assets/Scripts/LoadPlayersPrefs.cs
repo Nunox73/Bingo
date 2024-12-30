@@ -14,7 +14,7 @@ public class LoadPlayersPrefs : MonoBehaviour
     public TextMeshProUGUI txt_grid_player3score;
     
     // Start is called before the first frame update
-    void Start()
+    public void OnButtonClick()
     {
         
         // Reset Game and Player Preferences

@@ -87,10 +87,7 @@ public class Ball_Button : MonoBehaviour
         //Debug.Log("Button was clicked!");
         if (drawnNumber.text == TextNumber.text) {
                 CorrectNumber.Play();
-                yesButton.onClick.Invoke();
-                PlayerPrefs.SetInt("Player1Score", PlayerPrefs.GetInt("Player1Score") + 1);
-                PlayerPrefs.Save();
-                
+                yesButton.onClick.Invoke(); 
         } else {
             IncorrectNumber.Play();
         }
