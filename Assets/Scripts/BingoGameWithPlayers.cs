@@ -29,7 +29,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     [Header("Drawn Settings")]
     public Text drawnNumberText; // UI text for displaying the drawn number
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
-    public float drawnTimerRemaining = 15f;  // Set initial time
+    public float drawnTimerRemaining = 5f;  // Set initial time
     public bool drawnTimerIsRunning = false;
     public TextMeshProUGUI DrawnTimerText;  // Assign your TextMeshPro UI element
 
@@ -84,7 +84,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
+                //Debug.Log("Time has run out!");
                 timerIsRunning = false;
                 timeRemaining = 5; // Reset the winner timer time
                 winnerCanvas.SetActive(false);
@@ -108,6 +108,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             else
             {
                 //Debug.Log("Drawn Time has run out!");
+                btn_no_disable();
                 NoButton();
                 ResetDrawnTimer();
                 DrawBingoNumber();
@@ -362,6 +363,10 @@ public class BingoGameWithPlayers : MonoBehaviour
     public void btn_no_enable()
     {
 
+        btn_no_0.SetActive(false);
+        btn_no_1.SetActive(false);
+        btn_no_2.SetActive(false);
+        btn_no_3.SetActive(false);
         int randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
         switch (randomInt)
         {
