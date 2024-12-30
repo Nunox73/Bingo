@@ -222,9 +222,9 @@ public class BingoGameWithPlayers : MonoBehaviour
             
             if (player.CheckForBingo() && playerBingoWinner == 0)
             {
-                txt_Bingo_Winner.text = "Jogador " + player.PlayerID + " fez BINGO";
+                txt_Bingo_Winner.text = PlayerPrefs.GetString("Player" + player.PlayerID + "Name") + " fez BINGO";
                 playerBingoWinner = player.PlayerID;
-                txt_Name.text = "Jogador " + player.PlayerID;
+                txt_Name.text = PlayerPrefs.GetString("Player" + player.PlayerID + "Name");
                 txt_Reward.text = "Bingo";
                 winnerCanvas.SetActive(true);
                 gameCanvas.SetActive(false);
@@ -235,9 +235,9 @@ public class BingoGameWithPlayers : MonoBehaviour
             }
             if (player.CheckForLine() && playerLineWinner == 0)
             {
-                txt_Line_Winner.text = "Jogador " + player.PlayerID + " fez Linha";
+                txt_Line_Winner.text = PlayerPrefs.GetString("Player" + player.PlayerID + "Name") + " fez Linha";
                 playerLineWinner = player.PlayerID;
-                txt_Name.text = "Jogador " + player.PlayerID;
+                txt_Name.text = PlayerPrefs.GetString("Player" + player.PlayerID + "Name");
                 txt_Reward.text = "Linha";
                 winnerCanvas.SetActive(true);
                 gameCanvas.SetActive(false);
@@ -304,7 +304,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     public void NoButton()
     {
-        btn_no_disable();
+        //btn_no_disable();
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions

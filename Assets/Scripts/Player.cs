@@ -275,7 +275,7 @@ public class Player : MonoBehaviour
         // Check for win conditions
         if (linesComplete == 1 && !HasLine)
         {
-            Debug.Log("Jogador " + PlayerID + " fez LINHA!");
+            //Debug.Log("Jogador " + PlayerID + " fez LINHA!");
             
             HasLine = true;
             if (PlayerPrefs.GetInt("Linha") == 0) {
@@ -308,7 +308,7 @@ public class Player : MonoBehaviour
 
         if (cardComplete == 15)
         {
-            Debug.Log("Jogador " + PlayerID + " fez BINGO!");
+            //Debug.Log("Jogador " + PlayerID + " fez BINGO!");
             HasWon = true;
             
                 PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") + 9);
