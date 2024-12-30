@@ -49,7 +49,10 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     [Header("Buttons")]
     public GameObject btn_yes;
-    public GameObject btn_no;
+    public GameObject btn_no_0;
+    public GameObject btn_no_1;
+    public GameObject btn_no_2;
+    public GameObject btn_no_3;
     public Button ScoreRefreshButton;
 
     private List<Player> players = new List<Player>(); // List of players
@@ -61,7 +64,8 @@ public class BingoGameWithPlayers : MonoBehaviour
         winnerCanvas.SetActive(false);
         gameCanvas.SetActive(true);
         // Disable Player 1 buttons
-        btn_no.SetActive(false);
+        btn_no_disable();
+        
         
     }
     void Update()
@@ -184,8 +188,8 @@ public class BingoGameWithPlayers : MonoBehaviour
             drawnNumberText.text = "" + drawnNumber;
             allDrawnNumbersText.text += drawnNumber + " ";
 
-            // Enable Player 1 buttons
-            btn_no.SetActive(true);
+            // Enable Player 1 no_button
+            btn_no_enable();
             
 
             //Enable Timer
@@ -199,7 +203,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             {
                 drawnNumberText.text = "BINGO";
                 DrawnTimerText.text = "";
-                btn_no.SetActive(false);
+                btn_no_disable();
                 ScoreRefreshButton.onClick.Invoke();
             } else
             {
@@ -279,6 +283,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     // Check Player 1 number
     public void YesButton()
     {
+        btn_no_disable();
         foreach (Player player in players)
         {
             if (player.PlayerID == 1)
@@ -298,6 +303,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     public void NoButton()
     {
+        btn_no_disable();
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions
@@ -329,7 +335,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         } else
         {
             drawnTimerIsRunning = true;
-            btn_no.SetActive(true);
+            btn_no_enable();
             //btn_yes.SetActive(true);
         }
         btn_play.SetActive(false);
@@ -339,10 +345,40 @@ public class BingoGameWithPlayers : MonoBehaviour
     public void btn_Pause()
     {
         drawnTimerIsRunning = false;
-        btn_no.SetActive(false);
+        btn_no_disable();
         //btn_yes.SetActive(false);
         btn_play.SetActive(true);
         btn_pause.SetActive(false);
     }
+
+    public void btn_no_disable()
+    {
+        btn_no_0.SetActive(false);
+        btn_no_1.SetActive(false);
+        btn_no_2.SetActive(false);
+        btn_no_3.SetActive(false);
+    }
+
+    public void btn_no_enable()
+    {
+
+        int randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
+        switch (randomInt)
+        {
+            case 0:
+                btn_no_0.SetActive(true);
+                break;
+            case 1:
+                btn_no_1.SetActive(true);
+                break;
+            case 2:
+                btn_no_2.SetActive(true);
+                break;
+            case 3:
+                btn_no_3.SetActive(true);
+                break;
+        }
+    }
+
 
 }
