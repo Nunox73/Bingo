@@ -29,7 +29,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     [Header("Drawn Settings")]
     public Text drawnNumberText; // UI text for displaying the drawn number
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
-    public float drawnTimerRemaining = 10f;  // Set initial time
+    public float drawnTimerRemaining = 15f;  // Set initial time
     public bool drawnTimerIsRunning = false;
     public TextMeshProUGUI DrawnTimerText;  // Assign your TextMeshPro UI element
 
