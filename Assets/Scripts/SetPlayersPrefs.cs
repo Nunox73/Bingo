@@ -43,7 +43,6 @@ public class SetPlayersPrefs : MonoBehaviour
 
         Player_Name.text = PlayerPrefs.GetString("Player1Name");
         
-
         UpdateBoard();
 
     }
