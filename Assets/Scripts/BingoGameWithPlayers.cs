@@ -136,7 +136,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             bingoNumbers.Add(i); // Populate list with numbers from 1 to 89
         }
 
-        allDrawnNumbersText.text = "N�meros que sairam: ";
+        allDrawnNumbersText.text = "Números que sairam: ";
         drawnNumberText.text = "";
     }
 
@@ -208,7 +208,7 @@ public class BingoGameWithPlayers : MonoBehaviour
                 ScoreRefreshButton.onClick.Invoke();
             } else
             {
-                drawnNumberText.text = "J� sairam todos os n�meros!";
+                drawnNumberText.text = "Já sairam todos os números!";
             }
             
         }

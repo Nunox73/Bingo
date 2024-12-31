@@ -10,6 +10,8 @@ public class Change_Name : MonoBehaviour
 {
 
     public TMP_InputField Player_Name;
+
+    public SetPlayersPrefs scriptA;
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class Change_Name : MonoBehaviour
         PlayerPrefs.SetString("Player1Name", Player_Name.text);
         PlayerPrefs.Save();
 
-
+        scriptA.UpdateBoard();
        
     }
 

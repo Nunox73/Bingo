@@ -17,7 +17,7 @@ public class LoadPlayersPrefs : MonoBehaviour
     public void OnButtonClick()
     {
         
-        // Reset Game and Player Preferences
+        // Score Board
         txt_grid_player1name.text= PlayerPrefs.GetString("Player1Name");
         txt_grid_player2name.text= PlayerPrefs.GetString("Player2Name");
         txt_grid_player3name.text= PlayerPrefs.GetString("Player3Name");
