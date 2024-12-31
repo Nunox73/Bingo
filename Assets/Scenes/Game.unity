@@ -3213,7 +3213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -670, y: -496}
+  m_AnchoredPosition: {x: -664, y: -902}
   m_SizeDelta: {x: 200, y: 37.208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806850252
@@ -5304,7 +5304,7 @@ MonoBehaviour:
   WrongNumber: {fileID: 451530141}
   drawnNumberText: {fileID: 1002970884}
   allDrawnNumbersText: {fileID: 1603020898}
-  drawnTimerRemaining: 5
+  drawnTimerRemaining: 15
   drawnTimerIsRunning: 0
   DrawnTimerText: {fileID: 806850252}
   playerLineWinner: 0

@@ -109,9 +109,9 @@ public class BingoGameWithPlayers : MonoBehaviour
             {
                 //Debug.Log("Drawn Time has run out!");
                 btn_no_disable();
-                NoButton();
                 ResetDrawnTimer();
-                DrawBingoNumber();
+                NoButton();
+                //DrawBingoNumber();
             }
         }
     }
@@ -120,7 +120,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     void ResetDrawnTimer()
     {
         drawnTimerIsRunning = false;
-        drawnTimerRemaining = 10;
+        drawnTimerRemaining = 15;
     }
 
     // Initializes the Bingo numbers
