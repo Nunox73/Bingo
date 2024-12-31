@@ -11,6 +11,7 @@ public class Ball_Button : MonoBehaviour
 
     private Text drawnNumber;
     public Button yesButton;
+    private Button btn_play;
 
     [Header("Sounds")]
     public AudioSource CorrectNumber;
@@ -71,6 +72,29 @@ public class Ball_Button : MonoBehaviour
                 Debug.LogError("GameObject with the specified name not found.");
             }
 
+            // Find the Play Button GameObject by name
+            GameObject buttonObject2 = GameObject.Find("btn_play");
+
+            if (buttonObject2 != null)
+            {
+                // Get the Button component
+                btn_play = buttonObject2.GetComponent<Button>();
+
+                if (btn_play != null)
+                {
+                    //Debug.Log("Found Button: " + yesButton.name);
+                    //yesButton.onClick.AddListener(OnButtonClick);
+                }
+                else
+                {
+                    Debug.LogError("Play Button component not found on the GameObject.");
+                }
+            }
+            else
+            {
+                Debug.LogError("GameObject (Play Button) with the specified name not found.");
+            }
+
     }
 
     // Update is called once per frame
@@ -84,13 +108,16 @@ public class Ball_Button : MonoBehaviour
     public void OnButtonClick()
     {
 
-        //Debug.Log("Button was clicked!");
-        if (drawnNumber.text == TextNumber.text) {
+        if (btn_play.gameObject.activeInHierarchy == false){
+            if (drawnNumber.text == TextNumber.text) {
                 CorrectNumber.Play();
                 yesButton.onClick.Invoke(); 
-        } else {
-            IncorrectNumber.Play();
+            } else {
+                IncorrectNumber.Play();
+            }
         }
+        //Debug.Log("Button was clicked!");
+        
     }
 
 

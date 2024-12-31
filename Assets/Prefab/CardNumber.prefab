@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yesButton: {fileID: 0}
+  btn_play: {fileID: 0}
   CorrectNumber: {fileID: 5680760620687183239}
   IncorrectNumber: {fileID: 2922213118655444577}
   TextNumber: {fileID: 4153176358399386819}
