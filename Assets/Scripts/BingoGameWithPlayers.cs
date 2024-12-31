@@ -330,7 +330,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public void btn_Start()
     {
         
-        if (drawnTimerRemaining == 5)
+        if (drawnTimerRemaining == 15)
         {
             DrawBingoNumber();
         } else
