@@ -207,6 +207,11 @@ public class Player : MonoBehaviour
 
                 // Get the TextMeshProUGUI component to display the number
                 TextMeshProUGUI numberText = newCardNumber.GetComponent<TextMeshProUGUI>();
+                // Get the Image component of the number
+                //Image numberImage = newCardNumber.GetComponent<Image>();
+                // Find the child GameObject by name
+                Transform childTransform  = newCardNumber.transform.Find("Square");
+                Image numberImage = childTransform.GetComponent<Image>();
 
                 if (numberText != null)
                 {
@@ -220,6 +225,14 @@ public class Player : MonoBehaviour
                         numberText.text = card[row, col].ToString();  // Set the number
  //                       Image imagem = newCardNumber.transform.Find("White Ball").GetComponent<Image>(); //newCardNumber.GetComponentInChildren<Image>();
  //                       imagem.enabled = false;
+                        if (numberImage != null)
+                        {
+                            // Get the current color of the image
+                            Color currentColor = Color.white;
+                            // Set the alpha value to 0 to make it fully transparent
+                            currentColor.a = 0f; // Fully transparent
+                            numberImage.color = currentColor;
+                        }
                     }
 
                     // Store the text reference for further use (like marking numbers)

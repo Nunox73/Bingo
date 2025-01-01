@@ -25,6 +25,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public AudioSource NewNumberSound;
     public AudioSource CorrectNumber;
     public AudioSource WrongNumber;
+    public AudioSource BingoARolar;
 
     [Header("Drawn Settings")]
     public Text drawnNumberText; // UI text for displaying the drawn number
@@ -177,7 +178,10 @@ public class BingoGameWithPlayers : MonoBehaviour
         {
            
             // Play Sound
+
+            //BingoARolar.Play();
             NewNumberSound.Play();
+            
 
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];

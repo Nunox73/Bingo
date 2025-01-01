@@ -5302,6 +5302,7 @@ MonoBehaviour:
   NewNumberSound: {fileID: 1722799123}
   CorrectNumber: {fileID: 1850638676}
   WrongNumber: {fileID: 451530141}
+  BingoARolar: {fileID: 1497689079}
   drawnNumberText: {fileID: 1002970884}
   allDrawnNumbersText: {fileID: 1603020898}
   drawnTimerRemaining: 15
