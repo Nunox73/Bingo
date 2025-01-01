@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
         while (cardNumbers.Count < totalNumbersToPick)
         {
 
-            for (int rangeIndex = 0; rangeIndex < 9; rangeIndex++)
-            {
+            int rangeIndex = Random.Range(0,8);
+            
                 // Ensure that we don't exceed 2 numbers from this range
                 if (!numbersPickedFromRange.ContainsKey(rangeIndex))
                 {
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
                         break;
                     }
                 }
-            }
+            
         }
 
         // Sort the numbers into the 3x9 card grid
