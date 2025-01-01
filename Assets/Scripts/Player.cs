@@ -37,11 +37,27 @@ public class Player : MonoBehaviour
         Dictionary<int, List<int>> numberRanges = new Dictionary<int, List<int>>();
         for (int i = 0; i < 9; i++)
         {
+            int numberAdded = 0;
+            int maxNumbersAllowed = 10;
             List<int> range = new List<int>();
-            for (int j = i * 10 + 1; j <= i * 10 + 10 && j < 90; j++) // Creates ranges 1-9, 10-19, ..., 80-90
+
+            if (i == 0)
             {
-                range.Add(j);
+                numberAdded = 1;
+                maxNumbersAllowed = 9;
             }
+            else if(i == 9)
+            {
+                // Ter espaço para ainda mais um
+                maxNumbersAllowed = 11;
+            }
+
+            do
+            {
+                range.Add(i*10 + numberAdded);
+                numberAdded++;
+            } while (numberAdded <= maxNumbersAllowed);
+
             numberRanges.Add(i, range);
         }
 
@@ -54,18 +70,18 @@ public class Player : MonoBehaviour
         // Track how many numbers have been picked from each range
         Dictionary<int, int> numbersPickedFromRange = new Dictionary<int, int>();
 
-        // Ensure we pick 15 numbers, no more than 3 from each range
+        // Ensure we pick 15 numbers, no more than 2 from each range
         while (cardNumbers.Count < totalNumbersToPick)
         {
             for (int rangeIndex = 0; rangeIndex < 9; rangeIndex++)
             {
-                // Ensure that we don't exceed 3 numbers from this range
+                // Ensure that we don't exceed 2 numbers from this range
                 if (!numbersPickedFromRange.ContainsKey(rangeIndex))
                 {
                     numbersPickedFromRange[rangeIndex] = 0;
                 }
 
-                if (numbersPickedFromRange[rangeIndex] <= 3 && numberRanges[rangeIndex].Count > 0)
+                if (numbersPickedFromRange[rangeIndex] <= 1 && numberRanges[rangeIndex].Count > 0)
                 {
                     // Randomly pick a number from the current range
                     int randomIndex = Random.Range(0, numberRanges[rangeIndex].Count);
