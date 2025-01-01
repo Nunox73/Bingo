@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             int numberAdded = 0;
-            int maxNumbersAllowed = 10;
+            int maxNumbersAllowed = 9;
             List<int> range = new List<int>();
 
             if (i == 0)
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
         // Ensure we pick 15 numbers, no more than 2 from each range
         while (cardNumbers.Count < totalNumbersToPick)
         {
+
             for (int rangeIndex = 0; rangeIndex < 9; rangeIndex++)
             {
                 // Ensure that we don't exceed 2 numbers from this range
