@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         while (cardNumbers.Count < totalNumbersToPick)
         {
 
-            int rangeIndex = Random.Range(0,8);
+            int rangeIndex = Random.Range(0,9);
             
                 // Ensure that we don't exceed 2 numbers from this range
                 if (!numbersPickedFromRange.ContainsKey(rangeIndex))
