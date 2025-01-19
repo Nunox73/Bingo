@@ -110,13 +110,31 @@ public class Ball_Button : MonoBehaviour
 
         if (btn_play.gameObject.activeInHierarchy == false){
             if (drawnNumber.text == TextNumber.text) {
-                CorrectNumber.Play();
-                yesButton.onClick.Invoke(); 
+                StartCoroutine(CorrectNumber_Async()); 
             } else {
-                IncorrectNumber.Play();
+                StartCoroutine(IncorrectNumber_Async()); 
             }
         }
         //Debug.Log("Button was clicked!");
+        
+    }
+
+    IEnumerator CorrectNumber_Async()
+    {
+        CorrectNumber.Play();
+        bool CheckIfIsPlaying() => CorrectNumber.isPlaying;
+        // Waits for the audiosource finish playing the audio
+        yield return new WaitWhile(CheckIfIsPlaying);
+        yesButton.onClick.Invoke(); 
+    }
+    IEnumerator IncorrectNumber_Async()
+    {
+        IncorrectNumber.Play();
+        bool CheckIfIsPlaying() => IncorrectNumber.isPlaying;
+        // Waits for the audiosource finish playing the audio
+        yield return new WaitWhile(CheckIfIsPlaying);
+        int score = PlayerPrefs.GetInt("Player1Score") - 1;
+        PlayerPrefs.SetInt("Player1Score", score);
         
     }
 

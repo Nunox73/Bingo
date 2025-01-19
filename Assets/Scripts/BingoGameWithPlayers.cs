@@ -7,19 +7,19 @@ using TMPro;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
-    
-    
+
+
     private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-89)
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
-    
+
     public int numberOfPlayers = 3; // Set the number of players
     public int numberOfCards = 1; // Set the number of cards per player
     public GameObject playerCardPrefab; // Prefab for player cards
     public Transform playerCardsParent; // Parent object to hold player cards in the UI
     public GameObject gameCanvas;
     public GameObject btn_play;
-    public GameObject btn_pause; 
+    public GameObject btn_pause;
 
     [Header("Sounds")]
     public AudioSource NewNumberSound;
@@ -66,8 +66,8 @@ public class BingoGameWithPlayers : MonoBehaviour
         gameCanvas.SetActive(true);
         // Disable Player 1 buttons
         btn_no_disable();
-        
-        
+
+
     }
     void Update()
     {
@@ -95,7 +95,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
         // Check if the Drawn timer is running
         if (drawnTimerIsRunning && !timerIsRunning)
-        {           
+        {
             // Check if there's still time remaining
             if (drawnTimerRemaining > 0)
             {
@@ -165,23 +165,32 @@ public class BingoGameWithPlayers : MonoBehaviour
         for (int i = 1; i < numberOfPlayers; i++)
         {
 
-            
+
         }
 
     }
 
-   
+
     // Draws a random Bingo number
     public void DrawBingoNumber()
     {
+        StartCoroutine(DrawBingoNumber_Async());
+        
+    }
+
+    IEnumerator DrawBingoNumber_Async()
+    {
         if (bingoNumbers.Count > 0 && playerBingoWinner == 0)
         {
-           
             // Play Sound
+            BingoARolar.Play();
+            drawnNumberText.text = "";
+            bool CheckIfIsPlaying() => BingoARolar.isPlaying;
+            // Waits for the audiosource finish playing the audio
+            yield return new WaitWhile(CheckIfIsPlaying);
 
-            //BingoARolar.Play();
             NewNumberSound.Play();
-            
+
 
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];
@@ -190,17 +199,17 @@ public class BingoGameWithPlayers : MonoBehaviour
             drawnNumbers.Add(drawnNumber);
 
             // Update the UI to show the drawn number
-            drawnNumberText.text = "" + drawnNumber;
+            drawnNumberText.text = drawnNumber.ToString();
             allDrawnNumbersText.text += drawnNumber + " ";
 
             // Enable Player 1 no_button
             btn_no_enable();
-            
+
 
             //Enable Timer
             ResetDrawnTimer();
             drawnTimerIsRunning = true;
-           
+
         }
         else
         {
@@ -210,12 +219,15 @@ public class BingoGameWithPlayers : MonoBehaviour
                 DrawnTimerText.text = "";
                 btn_no_disable();
                 ScoreRefreshButton.onClick.Invoke();
-            } else
+            }
+            else
             {
                 drawnNumberText.text = "Já sairam todos os números!";
             }
-            
+
         }
+
+        yield return null;
     }
 
     // Checks for win conditions ()
@@ -223,7 +235,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         foreach (Player player in players)
         {
-            
+
             if (player.CheckForBingo() && playerBingoWinner == 0)
             {
                 txt_Bingo_Winner.text = PlayerPrefs.GetString("Player" + player.PlayerID + "Name") + " fez BINGO";
@@ -248,7 +260,7 @@ public class BingoGameWithPlayers : MonoBehaviour
                 timerIsRunning = true;
                 break; // Stop checking after the first winner is found
             }
-            
+
 
         }
     }
@@ -278,7 +290,8 @@ public class BingoGameWithPlayers : MonoBehaviour
             {
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
-        } else if (drawnTimerIsRunning)
+        }
+        else if (drawnTimerIsRunning)
         {
             DrawnTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
@@ -294,21 +307,21 @@ public class BingoGameWithPlayers : MonoBehaviour
             if (player.PlayerID == 1)
             {
                 player.MarkNumber(int.Parse(drawnNumberText.text));
-                
+
             }
 
         }
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions
-        CheckWinConditions();      
+        CheckWinConditions();
         // Drawn a new number
         DrawBingoNumber();
     }
 
     public void NoButton()
     {
-        //btn_no_disable();
+        btn_no_disable();
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions
@@ -333,11 +346,12 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     public void btn_Start()
     {
-        
+
         if (drawnTimerRemaining == 15)
         {
             DrawBingoNumber();
-        } else
+        }
+        else
         {
             drawnTimerIsRunning = true;
             btn_no_enable();
