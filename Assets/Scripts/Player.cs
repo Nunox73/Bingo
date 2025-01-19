@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
 
     private List<TextMeshProUGUI> cardNumberTexts = new List<TextMeshProUGUI>();
 
+    // Variables to control de number of number in each line
+    private int NumRow0;
+    private int NumRow1;
+    private int NumRow2;
+
     // Initializes the player with a Bingo card
     public void InitializePlayer(int id)
     {
@@ -104,7 +109,7 @@ public class Player : MonoBehaviour
             
         }
 
-        // Sort the numbers into the 3x9 card grid
+        // Sort the numbers
         cardNumbers.Sort();
 
         // Fill the card array and set marked to false
@@ -137,6 +142,8 @@ public class Player : MonoBehaviour
                 }
 
         }
+
+
         // Spit the numbers and spaces inside each column
         //int numIndex = 0;  // Tracks the current index in the sorted card numbers list
         for (numIndex = 0; numIndex <= 14; numIndex++)
@@ -149,7 +156,7 @@ public class Player : MonoBehaviour
                 {
                     if (card[1, col] < 0) // 2nd row is empty
                     {
-                        if (card[0, col] > 0) // no number on that column
+                        if (card[0, col] > 0) // only 1 number
                         {
                             if ((card[0, col] % 10) > 5)
                             {
@@ -161,19 +168,19 @@ public class Player : MonoBehaviour
                                 card[0, col] = -1;
                             }
                         }
-                    } else // 2 numbers
+                    } else // we have 2 numbers on this colum
                     {
                         // 2nd line
-                        if ((card[1, col] % 10) > 5)
+                        if ((card[1, col] % 10) >= 6)
                         {
                             card[2, col] = card[1, col];
                             card[1, col] = -1;
                         }
-                        if ((card[0, col] % 10) == 5)
+                        if ((card[0, col] % 10) >= 5)
                         {
                             card[1, col] = card[0, col];
                             card[0, col] = -1;
-                        }
+                        } 
                     }
                 }
                 col++; // Increment row
@@ -181,27 +188,119 @@ public class Player : MonoBehaviour
 
         }
 
-        // Validate the numbers in the card
-        int numberInCard = 0;
+ 
+
+        // Count non-empty fields in each row
         for (int row = 0; row < 3; row++)
         {
+            int nonEmptyCount = 0;
             for (int col = 0; col < 9; col++)
             {
-
-                if (card[row, col] == -1)
+                if (card[row, col] > 0)
                 {
-
+                    nonEmptyCount++;
+                    switch (row) {
+                    case 0:
+                        NumRow0 ++;
+                        break;
+                    case 1:
+                        NumRow1 ++;
+                        break; 
+                    case 2:
+                        NumRow2 ++;
+                        break;
+                    }
                 }
-                else
-                {
-                    numberInCard++;
+            }
+            
+        }
+
+        // Secure that the 3rd Row only has 5 numbers
+        if (NumRow2 != 5) { 
+            if (NumRow2 > 5){ // need to reduce number
+                for (int col = 0; col < 9; col++) {
+                    if (card[1, col] < 0  && NumRow2 != 5)
+                    {
+                        card[1, col] = card[2, col];
+                        card[2, col] = -1;
+                        NumRow2 --;
+                        NumRow1 ++;
+                    }
+                }
+            } 
+            if (NumRow2 < 5) { // need to increase number
+                for (int col = 0; col < 9; col++) {
+                    if (card[2, col] < 0 && card[1, col] > 0 && NumRow2 != 5)
+                    {
+                        card[2, col] = card[1, col];
+                        card[1, col] = -1;
+                        NumRow2 ++;
+                        NumRow1 --;
+                    }
                 }
             }
 
+            
         }
+
+        // Secure that the 2nd Row only has 5 numbers
+        if (NumRow1 != 5) { 
+            if (NumRow1 > 5){ // need to reduce number
+                for (int col = 0; col < 9; col++) {
+                    if (card[0, col] < 0 && NumRow1 != 5)
+                    {
+                        card[0, col] = card[1, col];
+                        card[1, col] = -1;
+                        NumRow1 --;
+                        NumRow0 ++;
+                    }
+                }
+            } 
+            if (NumRow1 < 5) { // need to increase number
+                for (int col = 0; col < 9; col++) {
+                    if (card[1, col] < 0 && card[0, col] > 0 && NumRow1 != 5)
+                    {
+                        card[1, col] = card[0, col];
+                        card[0, col] = -1;
+                        NumRow1 ++;
+                        NumRow0 --;
+                    }
+                }
+            }
+
+            
+        }
+
+        if (NumRow0 != 5 || NumRow1 != 5 || NumRow2 != 5) {
+                Debug.Log("ERRO: Numero de numeros nas linhas");
+                Debug.Log($"Jogador {PlayerID}");
+                Debug.Log($"Linha 0: {NumRow0}");
+                Debug.Log($"Linha 1: {NumRow1}");
+                Debug.Log($"Linha 2: {NumRow2}");
+        }
+
+        // Validate the numbers in the card
+        // int numberInCard = 0;
+        // for (int row = 0; row < 3; row++)
+        // {
+        //     for (int col = 0; col < 9; col++)
+        //     {
+
+        //         if (card[row, col] == -1)
+        //         {
+
+        //         }
+        //         else
+        //         {
+        //             numberInCard++;
+        //         }
+        //     }
+
+        // }
             // Create the card UI
             CreateCardUI();
     }
+
 
     // Creates the card UI
     void CreateCardUI()
