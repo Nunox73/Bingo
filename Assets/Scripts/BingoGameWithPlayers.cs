@@ -311,6 +311,13 @@ public class BingoGameWithPlayers : MonoBehaviour
             }
 
         }
+        
+
+
+        int score = PlayerPrefs.GetInt("Player1Score") - 1;
+        PlayerPrefs.SetInt("Player1Score", score);
+
+
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions

@@ -133,8 +133,7 @@ public class Ball_Button : MonoBehaviour
         bool CheckIfIsPlaying() => IncorrectNumber.isPlaying;
         // Waits for the audiosource finish playing the audio
         yield return new WaitWhile(CheckIfIsPlaying);
-        int score = PlayerPrefs.GetInt("Player1Score") - 1;
-        PlayerPrefs.SetInt("Player1Score", score);
+        
         
     }
 
