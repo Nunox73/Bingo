@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;  // Required for scene management
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public GameObject gameCanvas;
     public GameObject btn_play;
     public GameObject btn_pause;
+    
 
     [Header("Sounds")]
     public AudioSource NewNumberSound;
@@ -388,6 +390,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public void btn_no_enable()
     {
 
+        
         btn_no_0.SetActive(false);
         btn_no_1.SetActive(false);
         btn_no_2.SetActive(false);
