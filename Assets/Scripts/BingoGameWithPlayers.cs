@@ -5,12 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;  // Required for scene management
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Threading;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
 
 
-    private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-89)
+    private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-90)
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
 
 
@@ -381,36 +382,62 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     public void btn_no_disable()
     {
-        btn_no_0.SetActive(false);
-        btn_no_1.SetActive(false);
-        btn_no_2.SetActive(false);
-        btn_no_3.SetActive(false);
+        
+        if (GlobalVariables.buttonsConnected){          
+            for (int i = 0; i < 8; i++){ // Turn off all the buttons
+                SerialReader.instance.SendData(i + "O\n"); //Turn all the buttons off
+                //Thread.Sleep(500); // Pauses for 0.5 second (500 milliseconds)
+            }
+        } else {
+            btn_no_0.SetActive(false);
+            btn_no_1.SetActive(false);
+            btn_no_2.SetActive(false);
+            btn_no_3.SetActive(false);
+        }
     }
 
     public void btn_no_enable()
     {
 
-        
-        btn_no_0.SetActive(false);
-        btn_no_1.SetActive(false);
-        btn_no_2.SetActive(false);
-        btn_no_3.SetActive(false);
         int randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
-        switch (randomInt)
-        {
-            case 0:
-                btn_no_0.SetActive(true);
-                break;
-            case 1:
-                btn_no_1.SetActive(true);
-                break;
-            case 2:
-                btn_no_2.SetActive(true);
-                break;
-            case 3:
-                btn_no_3.SetActive(true);
-                break;
+        GlobalVariables.redButton = randomInt;
+
+        randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
+        GlobalVariables.greenButton = randomInt;
+
+        while(GlobalVariables.redButton == GlobalVariables.greenButton) {
+            randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
+             GlobalVariables.greenButton = randomInt;
         }
+
+        btn_no_disable(); // Disable all buttons
+
+        if (GlobalVariables.buttonsConnected){
+            //SerialReader.instance.SendData(GlobalVariables.redButton + "R\n"); //Activate the Red Button
+            SerialReader.instance.SendData(GlobalVariables.greenButton + "G\n"); //Activate the Green Button
+            
+        } else {
+            
+            switch (GlobalVariables.redButton)
+            {
+                case 0:
+                    btn_no_0.SetActive(true);
+                    break;
+                case 1:
+                    btn_no_1.SetActive(true);
+                    break;
+                case 2:
+                    btn_no_2.SetActive(true);
+                    break;
+                case 3:
+                    btn_no_3.SetActive(true);
+                    break;
+            }
+        }
+        
+
+
+        
     }
 
 

@@ -30,8 +30,9 @@ public class SetPlayersPrefs : MonoBehaviour
     }
     void Start()
     {
-        
+
         // Reset Game and Player Preferences
+        PlayerPrefs.SetString("Player1Name", "Eu");
         PlayerPrefs.SetString("Player2Name", "Joaquim");
         PlayerPrefs.SetString("Player3Name", "Maria");
         PlayerPrefs.SetInt("Player1Score", 0);
@@ -40,8 +41,6 @@ public class SetPlayersPrefs : MonoBehaviour
         PlayerPrefs.SetInt("Linha",0);
         PlayerPrefs.SetInt("Bingo",0);
         PlayerPrefs.Save();
-
-        Player_Name.text = PlayerPrefs.GetString("Player1Name");
         
         UpdateBoard();
 

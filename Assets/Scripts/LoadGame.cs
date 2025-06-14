@@ -7,12 +7,14 @@ using TMPro;
 public class LoadGame : MonoBehaviour
 {
     
-    public Button ScoreRefreshButton;   
+    public Button ScoreRefreshButton;
     // Start is called before the first frame update
     void Start()
     {
-    
+
         ScoreRefreshButton.onClick.Invoke();
+        
+        
 
     }
 

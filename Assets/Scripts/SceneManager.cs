@@ -12,7 +12,7 @@ public class SceneManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera.main.backgroundColor = new Color(0.749f, 0.945f, 0.984f);
     }
 
     // Update is called once per frame
