@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Concurrent;
 
+
 // Instructions:
 // Message format "2R\n"
 //    1st character is a number
@@ -39,8 +40,8 @@ public class SerialReader : MonoBehaviour
     public Button btn_5;
     public Button btn_6;
     public Button btn_7;
+    public Button btn_8;
     private ConcurrentQueue<string> mainThreadActions = new ConcurrentQueue<string>();
-
 
 
 
@@ -88,6 +89,9 @@ public class SerialReader : MonoBehaviour
                     string data = serialPort.ReadLine(); // Blocking call
                     lock (this)
                     {
+
+
+                        // Analise the data
                         receivedData = data;
                         Debug.Log("Received: " + receivedData);
                         
@@ -145,6 +149,7 @@ public class SerialReader : MonoBehaviour
 
     void Update()
     {
+
         // Handle queued Unity actions
         while (mainThreadActions.TryDequeue(out string action))
         {
@@ -173,12 +178,12 @@ public class SerialReader : MonoBehaviour
                 case "Button6":
                     btn_6.onClick.Invoke(); // Now it's safe to invoke
                     Debug.Log("Button 6 clicked via serial");
-                    break;                
+                    break;
                 case "Button7":
                     btn_7.onClick.Invoke(); // Now it's safe to invoke
                     Debug.Log("Button 7 clicked via serial");
                     break;
-                
+
 
             }
         }

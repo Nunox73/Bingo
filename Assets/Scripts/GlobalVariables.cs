@@ -12,10 +12,12 @@ public static class GlobalVariables
     // Gamer_1 Variables
     public static int age = 74; // Player Age
     public static string sex = "Feminino"; // Player Sex: Masculino, Feminino
-    public static string estadoCivil = "Casado(a)"; // Player Estado Civil: Solteiro(a), Casado(a), Viúvo(a), Divorciado(a)
 
     // Gamer_2 Variables
-    public static string residence; // Player Residence: "Casa, sozinho(a)", "Casa, com outros familiares", "Residência assistida"
+    public static string estadoCivil = "Casado(a)"; // Player Estado Civil: Solteiro(a), Casado(a), Viúvo(a), Divorciado(a)
+    public static string residence = "Casa, sozinho(a)"; // Player Residence: "Casa, sozinho(a)", "Casa, com outros familiares", "Residência assistida"
+
+
     public static bool tech_use; //Player uses tech like Smartphones or Tablets
     public static bool tech_dificulty; //The player has difficulties accessing technologies.
 

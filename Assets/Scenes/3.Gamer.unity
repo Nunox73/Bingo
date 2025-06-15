@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 649611881}
   m_Layer: 5
   m_Name: btn_4
-  m_TagString: 2_gamer_btn_4
+  m_TagString: 3_gamer_btn_4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1068,8 +1068,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728284619}
-        m_TargetAssemblyTypeName: Gamer_Buttons, Assembly-CSharp
+      - m_Target: {fileID: 728284624}
+        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
         m_MethodName: btn_4_click
         m_Mode: 1
         m_Arguments:
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 728284622}
   - component: {fileID: 728284621}
   - component: {fileID: 728284620}
-  - component: {fileID: 728284619}
+  - component: {fileID: 728284624}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -1276,21 +1276,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &728284619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728284618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcccee83d233c6b468f70854ebd8b6c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  age: {fileID: 861698187}
-  sex: {fileID: 2054250265}
-  estadoCivil: {fileID: 0}
 --- !u!114 &728284620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,6 +1327,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &728284624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728284618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25862b0cdd1f5644393225e99cf6d4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  estadoCivil: {fileID: 861698187}
+  residence: {fileID: 2054250265}
 --- !u!1 &745304275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,7 +1355,7 @@ GameObject:
   - component: {fileID: 745304277}
   m_Layer: 5
   m_Name: btn_1
-  m_TagString: 2_gamer_btn_1
+  m_TagString: 3_gamer_btn_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1425,8 +1424,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728284619}
-        m_TargetAssemblyTypeName: Gamer_Buttons, Assembly-CSharp
+      - m_Target: {fileID: 728284624}
+        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
         m_MethodName: btn_1_click
         m_Mode: 1
         m_Arguments:
@@ -1489,7 +1488,7 @@ GameObject:
   - component: {fileID: 754622960}
   m_Layer: 5
   m_Name: btn_6
-  m_TagString: 2_gamer_btn_6
+  m_TagString: 3_gamer_btn_6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1558,8 +1557,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728284619}
-        m_TargetAssemblyTypeName: Gamer_Buttons, Assembly-CSharp
+      - m_Target: {fileID: 728284624}
+        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
         m_MethodName: btn_6_click
         m_Mode: 1
         m_Arguments:
@@ -1813,7 +1812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: Casado(a)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1949,7 +1948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8797705790797537688, guid: 0826068c5a5cecb4faf84911e4d2304d, type: 3}
+  m_Sprite: {fileID: -2011423446152176597, guid: f0234534ad74c534e9e8a0de239f7581, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2598,7 +2597,7 @@ GameObject:
   - component: {fileID: 1626974146}
   m_Layer: 5
   m_Name: btn_2
-  m_TagString: 2_gamer_btn_2
+  m_TagString: 3_gamer_btn_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2667,8 +2666,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728284619}
-        m_TargetAssemblyTypeName: Gamer_Buttons, Assembly-CSharp
+      - m_Target: {fileID: 728284624}
+        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
         m_MethodName: btn_2_click
         m_Mode: 1
         m_Arguments:
@@ -2731,7 +2730,7 @@ GameObject:
   - component: {fileID: 2014555492}
   m_Layer: 5
   m_Name: btn_3
-  m_TagString: 2_gamer_btn_3
+  m_TagString: 3_gamer_btn_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2809,7 +2808,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 1.Main
+          m_StringArgument: 2.Gamer
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2014555493
@@ -3043,7 +3042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Feminino
+  m_text: Casa, sozinho(a)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -3136,7 +3135,7 @@ GameObject:
   - component: {fileID: 2079505178}
   m_Layer: 5
   m_Name: btn_5
-  m_TagString: 2_gamer_btn_5
+  m_TagString: 3_gamer_btn_5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3205,8 +3204,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 728284619}
-        m_TargetAssemblyTypeName: Gamer_Buttons, Assembly-CSharp
+      - m_Target: {fileID: 728284624}
+        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
         m_MethodName: btn_5_click
         m_Mode: 1
         m_Arguments:

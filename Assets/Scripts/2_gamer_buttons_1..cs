@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class Gamer_Buttons : MonoBehaviour
@@ -11,19 +12,31 @@ public class Gamer_Buttons : MonoBehaviour
     [Header("Questions")]
     public TextMeshProUGUI age;
     public TextMeshProUGUI sex;
-    public TextMeshProUGUI estadoCivil;
+
 
     private string[] sexos = { "Feminino", "Masculino" };
     private int sexoIndex = 0;
-    private string[] estados = { "Solteiro(a)", "Casado(a)", "Viúvo(a)", "Divorciado(a)" };
-    private int estadoIndex = 1;
+
 
     // Start is called before the first frame update
     void Start()
     {
         age.text = GlobalVariables.age.ToString();
         sex.text = GlobalVariables.sex;
-        estadoCivil.text = GlobalVariables.estadoCivil;
+
+        // Turn all the buttons Green
+        //Serial.SendData("9G\n");
+        SerialReader.instance.SendData("9G\n");
+        SerialReader.instance.SendData("3R\n");
+
+        // Set all the scene buttons in SerialReader
+        SerialReader.instance.btn_1 = GameObject.FindWithTag("2_gamer_btn_1")?.GetComponent<Button>();
+        SerialReader.instance.btn_2 = GameObject.FindWithTag("2_gamer_btn_2")?.GetComponent<Button>();
+        SerialReader.instance.btn_3 = GameObject.FindWithTag("2_gamer_btn_3")?.GetComponent<Button>();
+        SerialReader.instance.btn_4 = GameObject.FindWithTag("2_gamer_btn_4")?.GetComponent<Button>();
+        SerialReader.instance.btn_5 = GameObject.FindWithTag("2_gamer_btn_5")?.GetComponent<Button>();
+        SerialReader.instance.btn_6 = GameObject.FindWithTag("2_gamer_btn_6")?.GetComponent<Button>();
+
 
     }
 
@@ -50,12 +63,7 @@ public class Gamer_Buttons : MonoBehaviour
     }
     public void btn_3_click()
     {
-        // Recua para o próximo estado
-        if (estadoIndex > 0)
-        {
-            estadoIndex = (estadoIndex - 1) % estados.Length;
-            estadoCivil.text = estados[estadoIndex];
-        }
+
     }
     public void btn_4_click()
     {
@@ -70,16 +78,10 @@ public class Gamer_Buttons : MonoBehaviour
         sex.text = sexos[sexoIndex];
     }
     public void btn_6_click()
-    {
-        // Avança para o próximo estado
-        estadoIndex = (estadoIndex + 1) % estados.Length;
-        estadoCivil.text = estados[estadoIndex];
-    }
-    public void btn_7_click()
-    {
+    {     
         GlobalVariables.age = int.Parse(age.text);
         GlobalVariables.sex = sex.text;
-        GlobalVariables.estadoCivil = estadoCivil.text;
     }
+
 
 }

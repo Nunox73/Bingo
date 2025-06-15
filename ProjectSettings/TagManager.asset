@@ -5,6 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Winner_Canvas
+  - 1_main_btn_3
+  - 2_gamer_btn_3
+  - 2_gamer_btn_1
+  - 2_gamer_btn_2
+  - 2_gamer_btn_4
+  - 2_gamer_btn_5
+  - 2_gamer_btn_6
+  - 1_main_btn_6
+  - 3_gamer_btn_1
+  - 3_gamer_btn_2
+  - 3_gamer_btn_3
+  - 3_gamer_btn_4
+  - 3_gamer_btn_5
+  - 3_gamer_btn_6
   layers:
   - Default
   - TransparentFX

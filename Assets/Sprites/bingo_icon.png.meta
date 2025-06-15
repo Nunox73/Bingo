@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1f2be04b97ed01d41a6a2d0f461a67ac
+guid: 521082667ab00de4898c6d79ec21b45e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1640802225230535395
-    second: Bingo_logo_2_0
+      213: 6612420653889775598
+    second: bingo_icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bingo_logo_2_0
+      name: bingo_icon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 646
-        height: 153
+        width: 116
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d15a67ac113ba39e0800000000000000
-      internalID: -1640802225230535395
+      spriteID: ee76e84fc8904cb50800000000000000
+      internalID: 6612420653889775598
       vertices: []
       indices: 
       edges: []
