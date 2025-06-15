@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 649611881}
   m_Layer: 5
   m_Name: btn_4
-  m_TagString: 3_gamer_btn_4
+  m_TagString: 4_gamer_btn_4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1069,7 +1069,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 728284624}
-        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
+        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
         m_MethodName: btn_4_click
         m_Mode: 1
         m_Arguments:
@@ -1336,11 +1336,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 728284618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25862b0cdd1f5644393225e99cf6d4e7, type: 3}
+  m_Script: {fileID: 11500000, guid: a3c7cf688077e8b49852a6f26ffc780c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  estadoCivil: {fileID: 861698187}
-  residence: {fileID: 2054250265}
+  tech_use: {fileID: 861698187}
+  tech_dificulty: {fileID: 2054250265}
 --- !u!1 &745304275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 745304277}
   m_Layer: 5
   m_Name: btn_1
-  m_TagString: 3_gamer_btn_1
+  m_TagString: 4_gamer_btn_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 728284624}
-        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
+        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
         m_MethodName: btn_1_click
         m_Mode: 1
         m_Arguments:
@@ -1488,7 +1488,7 @@ GameObject:
   - component: {fileID: 754622960}
   m_Layer: 5
   m_Name: btn_6
-  m_TagString: 3_gamer_btn_6
+  m_TagString: 4_gamer_btn_6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 728284624}
-        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
+        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
         m_MethodName: btn_6_click
         m_Mode: 1
         m_Arguments:
@@ -1578,7 +1578,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 4.Gamer
+          m_StringArgument: 5.Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &754622961
@@ -1812,7 +1812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Casado(a)
+  m_text: Sim
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2011423446152176597, guid: f0234534ad74c534e9e8a0de239f7581, type: 3}
+  m_Sprite: {fileID: 1456025323183934126, guid: f9ae371d6ee5b84418496b7a90364032, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2300,7 +2300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Seguinte
+  m_text: Jogar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2597,7 +2597,7 @@ GameObject:
   - component: {fileID: 1626974146}
   m_Layer: 5
   m_Name: btn_2
-  m_TagString: 3_gamer_btn_2
+  m_TagString: 4_gamer_btn_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2667,7 +2667,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 728284624}
-        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
+        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
         m_MethodName: btn_2_click
         m_Mode: 1
         m_Arguments:
@@ -2730,7 +2730,7 @@ GameObject:
   - component: {fileID: 2014555492}
   m_Layer: 5
   m_Name: btn_3
-  m_TagString: 3_gamer_btn_3
+  m_TagString: 4_gamer_btn_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2808,7 +2808,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 2.Gamer
+          m_StringArgument: 3.Gamer
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2014555493
@@ -3042,7 +3042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Casa, sozinho(a)
+  m_text: Sim
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -3069,8 +3069,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3135,7 +3135,7 @@ GameObject:
   - component: {fileID: 2079505178}
   m_Layer: 5
   m_Name: btn_5
-  m_TagString: 3_gamer_btn_5
+  m_TagString: 4_gamer_btn_5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3205,7 +3205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 728284624}
-        m_TargetAssemblyTypeName: Gamer_Buttons_2, Assembly-CSharp
+        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
         m_MethodName: btn_5_click
         m_Mode: 1
         m_Arguments:

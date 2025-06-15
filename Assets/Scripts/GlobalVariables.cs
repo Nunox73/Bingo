@@ -18,8 +18,8 @@ public static class GlobalVariables
     public static string residence = "Casa, sozinho(a)"; // Player Residence: "Casa, sozinho(a)", "Casa, com outros familiares", "Residência assistida"
 
 
-    public static bool tech_use; //Player uses tech like Smartphones or Tablets
-    public static bool tech_dificulty; //The player has difficulties accessing technologies.
+    public static string tech_use = "Sim"; //Player uses tech like Smartphones or Tablets (Sim e Não)
+    public static string tech_dificulty = "Sim"; //The player has difficulties accessing technologies. (Sim e Não)
 
 
 }
