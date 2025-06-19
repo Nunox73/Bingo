@@ -47,21 +47,15 @@ public class Gamer_Buttons_3 : MonoBehaviour
     }
     public void btn_1_click()
     {
-        // Recua para o próximo estado
-        if (tech_useIndex > 0)
-        {
-            tech_useIndex = (tech_useIndex - 1) % tech_uses.Length;
-            tech_use.text = tech_uses[tech_useIndex];
-        }   
+        // Avança para o próximo estado
+        tech_useIndex = (tech_useIndex + 1) % tech_uses.Length;
+        tech_use.text = tech_uses[tech_useIndex];
     }
     public void btn_2_click()
     {
-        // Recua nas residences
-        if (tech_dificultyIndex > 0)
-        {
-            tech_dificultyIndex = (tech_dificultyIndex - 1) % tech_dificultys.Length;
-            tech_dificulty.text = tech_dificultys[tech_dificultyIndex];
-        } 
+        // Avança para o próximo estado
+        tech_dificultyIndex = (tech_dificultyIndex + 1) % tech_dificultys.Length;
+        tech_dificulty.text = tech_dificultys[tech_dificultyIndex]; 
     }
     public void btn_3_click()
     {
@@ -75,7 +69,7 @@ public class Gamer_Buttons_3 : MonoBehaviour
     }
     public void btn_5_click()
     {
-        // Avança nas residences
+        // Avança para o próximo estado
         tech_dificultyIndex = (tech_dificultyIndex + 1) % tech_dificultys.Length;
         tech_dificulty.text = tech_dificultys[tech_dificultyIndex]; 
     }

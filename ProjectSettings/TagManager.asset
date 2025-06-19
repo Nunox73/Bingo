@@ -25,6 +25,12 @@ TagManager:
   - 4_gamer_btn_4
   - 4_gamer_btn_5
   - 4_gamer_btn_6
+  - 5_game_btn_1
+  - 5_game_btn_2
+  - 5_game_btn_3
+  - 5_game_btn_4
+  - 5_game_btn_5
+  - 5_game_btn_6
   layers:
   - Default
   - TransparentFX
