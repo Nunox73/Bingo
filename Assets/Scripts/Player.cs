@@ -361,6 +361,8 @@ public class Player : MonoBehaviour
     // Marks the number on the card if it exists
     public void MarkNumber(int number)
     {
+
+        bool haveit = false; // used to validate if prssing the green button without the number
         for (int row = 0; row < 3; row++)
         {
             for (int col = 0; col < 9; col++)
@@ -369,16 +371,24 @@ public class Player : MonoBehaviour
                 {
                     marked[row, col] = true;
                     int index = row * 9 + col;
-                    if (cardNumberTexts[index].color != Color.red) {
+                    if (cardNumberTexts[index].color != Color.red)
+                    {
                         cardNumberTexts[index].color = Color.red;  // Mark the number
-                        PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score")+1);
+                        PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") + 1);
                         PlayerPrefs.Save();
+                        haveit = true;
                     }
-                    
+
                 }
             }
         }
+        if  (haveit == false && PlayerID.ToString() == "1"){ // In case of a false "Tenho"
+            PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") - 1);
+            PlayerPrefs.Save();
+        }
     }
+    
+    
 
     // Checks for win conditions (Line and Bingo)
     public bool CheckForLine()
@@ -405,14 +415,15 @@ public class Player : MonoBehaviour
         if (linesComplete == 1 && !HasLine)
         {
             //Debug.Log("Jogador " + PlayerID + " fez LINHA!");
-            
+
             HasLine = true;
-            if (PlayerPrefs.GetInt("Linha") == 0) {
+            if (PlayerPrefs.GetInt("Linha") == 0)
+            {
                 PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") + 4);
-                PlayerPrefs.SetInt("Linha",1);
+                PlayerPrefs.SetInt("Linha", 1);
                 PlayerPrefs.Save();
             }
-            
+
             //BingoGameWithPlayers.playerLineWinner = PlayerID;
             return true;
         }

@@ -202,10 +202,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 322574314}
-        m_TargetAssemblyTypeName: SceneManagerScript, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 322574316}
+        m_TargetAssemblyTypeName: Game_Buttons, Assembly-CSharp
+        m_MethodName: btn_3_click
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -413,10 +413,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 351013065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 312.69202, y: -20.121002}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55575293
 MonoBehaviour:
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jogador 3
+  m_text: Maria
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -600,8 +600,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
+      - m_Target: {fileID: 322574316}
+        m_TargetAssemblyTypeName: Game_Buttons, Assembly-CSharp
         m_MethodName: btn_5_click
         m_Mode: 1
         m_Arguments:
@@ -953,7 +953,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &154451625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 284912266}
   - component: {fileID: 284912265}
   m_Layer: 5
-  m_Name: btn_green (1)
+  m_Name: btn_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,7 +1240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -198.32, y: -745}
+  m_AnchoredPosition: {x: 16, y: -773.58}
   m_SizeDelta: {x: 552.643, y: 90.581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288255048
@@ -1270,7 +1270,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1321,7 +1321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000023842, y: -817}
+  m_AnchoredPosition: {x: -1154, y: -242}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289938980
@@ -1501,6 +1501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e902c5edfabd9ef4e8e735ed872c6548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bingogamewithplayers: {fileID: 1454141284}
+  scenemanagerscript: {fileID: 322574314}
 --- !u!1 &339561022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,9 +1972,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1454141284}
-        m_TargetAssemblyTypeName: BingoGameWithPlayers, Assembly-CSharp
-        m_MethodName: btn_Start
+      - m_Target: {fileID: 322574316}
+        m_TargetAssemblyTypeName: Game_Buttons, Assembly-CSharp
+        m_MethodName: btn_6_click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3948,10 +3950,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 351013065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -127.308, y: -70.121}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800925788
 MonoBehaviour:
@@ -4086,7 +4088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -664, y: -902}
+  m_AnchoredPosition: {x: -411, y: -918}
   m_SizeDelta: {x: 200, y: 37.208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806850252
@@ -4222,6 +4224,7 @@ RectTransform:
   - {fileID: 1010531417}
   - {fileID: 288255047}
   - {fileID: 1002970886}
+  - {fileID: 1669606669}
   - {fileID: 806850251}
   m_Father: {fileID: 1190388198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4246,7 +4249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &980472866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4552,7 +4555,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4583,7 +4586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -198.32, y: -654.42}
+  m_AnchoredPosition: {x: 16, y: -683}
   m_SizeDelta: {x: 552.643, y: 90.581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1103777886
@@ -5345,8 +5348,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
+      - m_Target: {fileID: 322574316}
+        m_TargetAssemblyTypeName: Game_Buttons, Assembly-CSharp
         m_MethodName: btn_1_click
         m_Mode: 1
         m_Arguments:
@@ -5700,7 +5703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1168, y: -355}
+  m_AnchoredPosition: {x: -1152, y: -720}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311200128
@@ -5974,10 +5977,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 351013065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -127.308, y: -20.121002}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1381303586
 MonoBehaviour:
@@ -5999,7 +6002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jogador 1
+  m_text: Eu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6246,10 +6249,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 351013065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 92.692, y: -20.121002}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405246504
 MonoBehaviour:
@@ -6271,7 +6274,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jogador 2
+  m_text: Joaquim
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -6841,8 +6844,11 @@ MonoBehaviour:
   playerCardPrefab: {fileID: 8841855840386925772, guid: dce6618e0912cd84ca66b2ef7310ef55, type: 3}
   playerCardsParent: {fileID: 980472866}
   gameCanvas: {fileID: 1190388193}
-  btn_play: {fileID: 289938978}
+  btn_play: {fileID: 0}
   btn_pause: {fileID: 1150396041}
+  txt_vamos: {fileID: 1669606670}
+  PlayerCardsParent: {fileID: 980472864}
+  Scores: {fileID: 154451624}
   NewNumberSound: {fileID: 1722799123}
   CorrectNumber: {fileID: 1850638676}
   WrongNumber: {fileID: 451530141}
@@ -6862,11 +6868,14 @@ MonoBehaviour:
   timeRemaining: 5
   timerIsRunning: 0
   timerText: {fileID: 391033752}
-  btn_yes: {fileID: 1405885261}
-  btn_no_0: {fileID: 1311200126}
-  btn_no_1: {fileID: 91928847}
-  btn_no_2: {fileID: 1103777886}
-  btn_no_3: {fileID: 649914608}
+  btn_1: {fileID: 1220592292}
+  btn_2: {fileID: 1775044333}
+  btn_3: {fileID: 14330707}
+  btn_4: {fileID: 1867103298}
+  btn_5: {fileID: 66916837}
+  btn_6: {fileID: 433348763}
+  btn_green: {fileID: 1182178550}
+  btn_red: {fileID: 284912265}
   ScoreRefreshButton: {fileID: 97692869}
 --- !u!1 &1497689077
 GameObject:
@@ -7029,10 +7038,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 351013065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 92.692, y: -70.121}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501240765
 MonoBehaviour:
@@ -7484,6 +7493,85 @@ RectTransform:
   m_AnchoredPosition: {x: 22.469, y: -808}
   m_SizeDelta: {x: 994.214, y: 90.749}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1669606668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1669606669}
+  - component: {fileID: 1669606671}
+  - component: {fileID: 1669606670}
+  m_Layer: 5
+  m_Name: txt_vamos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1669606669
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669606668}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 857872693}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 15.3379, y: 50.2151}
+  m_SizeDelta: {x: 843.611, y: 1375.8503}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1669606670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669606668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 120
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 180
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Vamos jogar bingo com o Joaquim e a Maria?\n\nCarregue no bot\xE3o Verde"
+--- !u!222 &1669606671
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669606668}
+  m_CullTransparentMesh: 1
 --- !u!1 &1671899665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7775,8 +7863,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
+      - m_Target: {fileID: 322574316}
+        m_TargetAssemblyTypeName: Game_Buttons, Assembly-CSharp
         m_MethodName: btn_2_click
         m_Mode: 1
         m_Arguments:
@@ -8122,10 +8210,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 351013065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 312.69202, y: -70.121}
+  m_SizeDelta: {x: 220, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860687037
 MonoBehaviour:
@@ -8309,8 +8397,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Gamer_Buttons_3, Assembly-CSharp
+      - m_Target: {fileID: 322574316}
+        m_TargetAssemblyTypeName: Game_Buttons, Assembly-CSharp
         m_MethodName: btn_4_click
         m_Mode: 1
         m_Arguments:
@@ -8591,7 +8679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2004395476
 RectTransform:
   m_ObjectHideFlags: 0

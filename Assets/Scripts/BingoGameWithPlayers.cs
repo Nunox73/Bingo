@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;  // Required for scene management
 using TMPro;
 using UnityEngine.EventSystems;
 using System.Threading;
+using Unity.VisualScripting;
 
 public class BingoGameWithPlayers : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class BingoGameWithPlayers : MonoBehaviour
     public GameObject gameCanvas;
     public GameObject btn_play;
     public GameObject btn_pause;
+    public Text txt_vamos;
+    public GameObject PlayerCardsParent;
+    public GameObject Scores;
     
 
     [Header("Sounds")]
@@ -52,11 +56,15 @@ public class BingoGameWithPlayers : MonoBehaviour
     public TextMeshProUGUI timerText;  // Assign your TextMeshPro UI element
 
     [Header("Buttons")]
-    public GameObject btn_yes;
-    public GameObject btn_no_0;
-    public GameObject btn_no_1;
-    public GameObject btn_no_2;
-    public GameObject btn_no_3;
+    //public GameObject btn_yes;
+    public GameObject btn_1;
+    public GameObject btn_2;
+    public GameObject btn_3;
+    public GameObject btn_4;
+    public GameObject btn_5;
+    public GameObject btn_6;
+    public Button btn_green;
+    public Button btn_red;
     public Button ScoreRefreshButton;
 
     private List<Player> players = new List<Player>(); // List of players
@@ -68,9 +76,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         winnerCanvas.SetActive(false);
         gameCanvas.SetActive(true);
         // Disable Player 1 buttons
-        btn_no_disable();
-
-
+        //btn_disable(); managed by the buttons script
     }
     void Update()
     {
@@ -112,7 +118,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             else
             {
                 //Debug.Log("Drawn Time has run out!");
-                btn_no_disable();
+                //btn_disable();
                 ResetDrawnTimer();
                 NoButton();
                 //DrawBingoNumber();
@@ -206,7 +212,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             allDrawnNumbersText.text += drawnNumber + " ";
 
             // Enable Player 1 no_button
-            btn_no_enable();
+            btn_enable();
 
 
             //Enable Timer
@@ -220,7 +226,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             {
                 drawnNumberText.text = "BINGO";
                 DrawnTimerText.text = "";
-                btn_no_disable();
+                //btn_disable();
                 ScoreRefreshButton.onClick.Invoke();
             }
             else
@@ -276,7 +282,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         txt_Bingo_Winner.text = "";
         txt_Line_Winner.text = "";
         drawnTimerIsRunning = false;
-        btn_play.SetActive(true);
+        //btn_play.SetActive(true);
     }
 
     void DisplayTime(float timeToDisplay)
@@ -304,7 +310,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     // Check Player 1 number
     public void YesButton()
     {
-        btn_no_disable();
+        btn_disable();
         foreach (Player player in players)
         {
             if (player.PlayerID == 1)
@@ -315,10 +321,8 @@ public class BingoGameWithPlayers : MonoBehaviour
 
         }
         
-
-
-        int score = PlayerPrefs.GetInt("Player1Score") - 1;
-        PlayerPrefs.SetInt("Player1Score", score);
+        //int score = PlayerPrefs.GetInt("Player1Score") - 1;
+        //PlayerPrefs.SetInt("Player1Score", score);
 
 
         // Validate all the other players cards numbers
@@ -331,7 +335,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     public void NoButton()
     {
-        btn_no_disable();
+        btn_disable();
         // Validate all the other players cards numbers
         markNumbers();
         // Check Winning Conditions
@@ -364,23 +368,23 @@ public class BingoGameWithPlayers : MonoBehaviour
         else
         {
             drawnTimerIsRunning = true;
-            btn_no_enable();
+            btn_enable();
             //btn_yes.SetActive(true);
         }
-        btn_play.SetActive(false);
-        btn_pause.SetActive(true);
+        //btn_play.SetActive(false);
+        //btn_pause.SetActive(true);
     }
 
     public void btn_Pause()
     {
         drawnTimerIsRunning = false;
-        btn_no_disable();
+        btn_disable();
         //btn_yes.SetActive(false);
-        btn_play.SetActive(true);
-        btn_pause.SetActive(false);
+        //btn_play.SetActive(true);
+        //btn_pause.SetActive(false);
     }
 
-    public void btn_no_disable()
+    public void btn_disable()
     {
         
         if (GlobalVariables.buttonsConnected){          
@@ -389,54 +393,81 @@ public class BingoGameWithPlayers : MonoBehaviour
                 //Thread.Sleep(500); // Pauses for 0.5 second (500 milliseconds)
             }
         } else {
-            btn_no_0.SetActive(false);
-            btn_no_1.SetActive(false);
-            btn_no_2.SetActive(false);
-            btn_no_3.SetActive(false);
+            SerialReader.instance.btn_1.gameObject.SetActive(false);
+            SerialReader.instance.btn_2.gameObject.SetActive(false);
+            SerialReader.instance.btn_4.gameObject.SetActive(false);
+            SerialReader.instance.btn_5.gameObject.SetActive(false);
         }
     }
 
-    public void btn_no_enable()
+    public void btn_enable()
     {
 
-        int randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
-        GlobalVariables.redButton = randomInt;
+        int[] options = { 1, 2, 4, 5 };
+        int randomIndex = Random.Range(0, options.Length); // Random.Range is inclusive min, exclusive max
+        GlobalVariables.greenButton = options[randomIndex];
 
-        randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
-        GlobalVariables.greenButton = randomInt;
+        //btn_disable(); // Disable all buttons
 
-        while(GlobalVariables.redButton == GlobalVariables.greenButton) {
-            randomInt = UnityEngine.Random.Range(0, 4); // Random number between 0 and 3
-             GlobalVariables.greenButton = randomInt;
-        }
-
-        btn_no_disable(); // Disable all buttons
-
-        if (GlobalVariables.buttonsConnected){
-            //SerialReader.instance.SendData(GlobalVariables.redButton + "R\n"); //Activate the Red Button
+        if (GlobalVariables.buttonsConnected)
+        {
+            SerialReader.instance.SendData("9R\n"); //Activate the Red Button
             SerialReader.instance.SendData(GlobalVariables.greenButton + "G\n"); //Activate the Green Button
-            
-        } else {
-            
-            switch (GlobalVariables.redButton)
-            {
-                case 0:
-                    btn_no_0.SetActive(true);
-                    break;
-                case 1:
-                    btn_no_1.SetActive(true);
-                    break;
-                case 2:
-                    btn_no_2.SetActive(true);
-                    break;
-                case 3:
-                    btn_no_3.SetActive(true);
-                    break;
-            }
         }
-        
 
+        foreach (int button in options)
+        {
+            if (GlobalVariables.greenButton == button)
+            {
+                switch (button)
+                {
+                    case 1:
+                        SerialReader.instance.btn_1.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_1.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
+                        break;
+                    case 2:
+                        SerialReader.instance.btn_2.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_2.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
+                        break;
+                    case 4:
+                        SerialReader.instance.btn_4.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_4.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
+                        break;
+                    case 5:
+                        SerialReader.instance.btn_5.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_5.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
+                        break;
+                }
+            }
+            else
+            {
+                switch (button)
+                {
+                    case 1:
+                        SerialReader.instance.btn_1.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_1.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
+                        break;
+                    case 2:
+                        SerialReader.instance.btn_2.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_2.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
+                        break;
+                    case 4:
+                        SerialReader.instance.btn_4.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_4.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
+                        break;
+                    case 5:
+                        SerialReader.instance.btn_5.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
+                        SerialReader.instance.btn_5.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
+                        break;
+                }
+            }
 
+        }
+
+        SerialReader.instance.btn_1.gameObject.SetActive(true);
+        SerialReader.instance.btn_2.gameObject.SetActive(true);
+        SerialReader.instance.btn_4.gameObject.SetActive(true);
+        SerialReader.instance.btn_5.gameObject.SetActive(true);
         
     }
 
