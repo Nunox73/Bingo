@@ -121,6 +121,8 @@ public class Game_Buttons : MonoBehaviour
             SerialReader.instance.btn_2.gameObject.SetActive(false);
             SerialReader.instance.btn_4.gameObject.SetActive(false);
             SerialReader.instance.btn_5.gameObject.SetActive(false);
+        } else if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Seguinte"){
+            scenemanagerscript.LoadScene("6.Questi");
         }
         
     }

@@ -36,6 +36,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     [Header("Drawn Settings")]
     public Text drawnNumberText; // UI text for displaying the drawn number
+    public Text drawnText; // UI text "Tem o número?"
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
     public float drawnTimerRemaining = 5f;  // Set initial time
     public bool drawnTimerIsRunning = false;
@@ -77,6 +78,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         gameCanvas.SetActive(true);
         // Disable Player 1 buttons
         //btn_disable(); managed by the buttons script
+        drawnText.enabled = false;
     }
     void Update()
     {
@@ -148,6 +150,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
         allDrawnNumbersText.text = "Números que sairam: ";
         drawnNumberText.text = "";
+        drawnText.enabled = false;
     }
 
     // Generates Bingo cards for each player
@@ -191,9 +194,16 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         if (bingoNumbers.Count > 0 && playerBingoWinner == 0)
         {
+            
+            drawnNumberText.text = "";
+            drawnText.enabled = false;
+            // Disable all the game buttons
+                SerialReader.instance.btn_1.gameObject.SetActive(false);
+                SerialReader.instance.btn_2.gameObject.SetActive(false);
+                SerialReader.instance.btn_4.gameObject.SetActive(false);
+                SerialReader.instance.btn_5.gameObject.SetActive(false);
             // Play Sound
             BingoARolar.Play();
-            drawnNumberText.text = "";
             bool CheckIfIsPlaying() => BingoARolar.isPlaying;
             // Waits for the audiosource finish playing the audio
             yield return new WaitWhile(CheckIfIsPlaying);
@@ -209,6 +219,12 @@ public class BingoGameWithPlayers : MonoBehaviour
 
             // Update the UI to show the drawn number
             drawnNumberText.text = drawnNumber.ToString();
+            drawnText.enabled = true;
+            // Enable all the game buttons
+                SerialReader.instance.btn_1.gameObject.SetActive(true);
+                SerialReader.instance.btn_2.gameObject.SetActive(true);
+                SerialReader.instance.btn_4.gameObject.SetActive(true);
+                SerialReader.instance.btn_5.gameObject.SetActive(true);
             allDrawnNumbersText.text += drawnNumber + " ";
 
             // Enable Player 1 no_button
@@ -225,13 +241,28 @@ public class BingoGameWithPlayers : MonoBehaviour
             if (playerBingoWinner > 0)
             {
                 drawnNumberText.text = "BINGO";
+                drawnText.enabled = false;
                 DrawnTimerText.text = "";
+                //Change the btn_6 teste to "Seguinte"
+                    SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Seguinte";
+                    SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().fontSize = 20;
+                // Disable all the game buttons
+                    SerialReader.instance.btn_1.gameObject.SetActive(false);
+                    SerialReader.instance.btn_2.gameObject.SetActive(false);
+                    SerialReader.instance.btn_4.gameObject.SetActive(false);
+                    SerialReader.instance.btn_5.gameObject.SetActive(false);
                 //btn_disable();
-                ScoreRefreshButton.onClick.Invoke();
+                    ScoreRefreshButton.onClick.Invoke();
             }
             else
             {
                 drawnNumberText.text = "Já sairam todos os números!";
+                drawnText.enabled = false;
+                // Disable all the game buttons
+                    SerialReader.instance.btn_1.gameObject.SetActive(false);
+                    SerialReader.instance.btn_2.gameObject.SetActive(false);
+                    SerialReader.instance.btn_4.gameObject.SetActive(false);
+                    SerialReader.instance.btn_5.gameObject.SetActive(false);
             }
 
         }
