@@ -53,7 +53,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     [Header("Winner Timmer Settings")]
     public float timeRemaining = GlobalVariables.winnerCanvasTimer;  // Set initial time 
-    public bool timerIsRunning = false;
+    public bool WinnerTimerIsRunning = false;
     public TextMeshProUGUI timerText;  // Winner canvas remaining timmer
 
     [Header("Start Timmer")]
@@ -86,7 +86,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     void Update()
     {
         // Check if the Winner timer is running
-        if (timerIsRunning)
+        if (WinnerTimerIsRunning)
         {
             // Check if there's still time remaining
             if (timeRemaining > 0)
@@ -100,16 +100,17 @@ public class BingoGameWithPlayers : MonoBehaviour
             else
             {
                 // Register the time that Winner Canvas was active
-                    if (txt_Reward.text == "Linha")
-                    {
-                        GlobalVariables.linha = timerText.ToString();
+                if (txt_Reward.text == "Linha")
+                {
+                    GlobalVariables.linha = timerText.ToString();
+                    DrawBingoNumber();
                     }
-                    else if (txt_Reward.text == "Bingo")
-                    {
-                        GlobalVariables.bingo = timerText.ToString();
-                    }
+                else if (txt_Reward.text == "Bingo")
+                {
+                    GlobalVariables.bingo = timerText.ToString();
+                }
                 //Debug.Log("Time has run out!");
-                timerIsRunning = false;
+                WinnerTimerIsRunning = false;
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(false);
                 gameCanvas.SetActive(true);
@@ -125,7 +126,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
 
         // Check if the Drawn timer is running and Winner Canvas is off
-        if (drawnTimerIsRunning && !timerIsRunning && winnerCanvas.activeSelf == false)
+        if (drawnTimerIsRunning && !WinnerTimerIsRunning && winnerCanvas.activeSelf == false)
         {
             // Check if there's still time remaining
             if (drawnTimerRemaining > 0)
@@ -140,10 +141,10 @@ public class BingoGameWithPlayers : MonoBehaviour
             else
             {
                 //Debug.Log("Drawn Time has run out!");
-                //btn_disable();
+                btn_disable();
                 ResetDrawnTimer();
                 NoButton();
-                //DrawBingoNumber();
+                DrawBingoNumber();
             }
         }
     }
@@ -212,7 +213,7 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     IEnumerator DrawBingoNumber_Async()
     {
-        if (bingoNumbers.Count > 0 && playerBingoWinner == 0)
+        if (bingoNumbers.Count > 0 && playerBingoWinner == 0 && (winnerCanvas.activeSelf == false))
         {
             
             drawnNumberText.text = "";
@@ -249,7 +250,6 @@ public class BingoGameWithPlayers : MonoBehaviour
 
             // Enable Player 1 no_button
             btn_enable();
-
 
             //Enable Timer
             ResetDrawnTimer();
@@ -305,10 +305,10 @@ public class BingoGameWithPlayers : MonoBehaviour
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(true);
                 // Leds
-                    SerialReader.instance.SendData("9O\n"); // All Off
-                    SerialReader.instance.SendData("6G\n"); // 6 Green
+                SerialReader.instance.SendData("9O\n"); // All Off
+                SerialReader.instance.SendData("6G\n"); // 6 Green
                 gameCanvas.SetActive(false);
-                timerIsRunning = true;
+                WinnerTimerIsRunning = true;
                 drawnTimerIsRunning = false;
                 btn_pause.SetActive(false);
                 break; // Stop checking after the first winner is found
@@ -322,12 +322,13 @@ public class BingoGameWithPlayers : MonoBehaviour
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(true);
                 gameCanvas.SetActive(false);
-                timerIsRunning = true;
+                WinnerTimerIsRunning = true;
                 break; // Stop checking after the first winner is found
             }
 
 
         }
+        
     }
 
     // Resets the Bingo game
@@ -349,7 +350,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);  // Modulus operator to get seconds
 
         // Update the text (if using TextMeshPro)
-        if (timerIsRunning)
+        if (WinnerTimerIsRunning)
         {
             if (timerText != null)
             {
@@ -368,9 +369,10 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         btn_disable();
         // Save the game buttons click
-            if(SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Pausa"){
-                AddTimeClicks(1);
-            }
+        if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Pausa")
+        {
+            AddTimeClicks(1);
+        }
         foreach (Player player in players)
         {
             if (player.PlayerID == 1)
@@ -380,7 +382,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             }
 
         }
-        
+
         //int score = PlayerPrefs.GetInt("Player1Score") - 1;
         //PlayerPrefs.SetInt("Player1Score", score);
 
@@ -391,6 +393,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         CheckWinConditions();
         // Drawn a new number
         DrawBingoNumber();
+        
     }
 
     public void NoButton()
@@ -398,14 +401,16 @@ public class BingoGameWithPlayers : MonoBehaviour
         btn_disable();
         // Validate all the other players cards numbers
         // Save the game buttons click
-            if(SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Pausa"){
-                AddTimeClicks(1);
-            }
+        if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Pausa")
+        {
+            AddTimeClicks(1);
+        }
         markNumbers();
         // Check Winning Conditions
         CheckWinConditions();
         // Drawn a new number
         DrawBingoNumber();
+        
         
     }
 

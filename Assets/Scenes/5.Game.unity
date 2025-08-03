@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 76252909}
   - component: {fileID: 76252908}
   m_Layer: 5
-  m_Name: btn_6
+  m_Name: btn_continuar
   m_TagString: 5_game_btn_6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -682,7 +682,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1546777315}
-  m_Father: {fileID: 339561026}
+  m_Father: {fileID: 277780818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1198,6 +1198,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 76252907}
   - {fileID: 1252246967}
   m_Father: {fileID: 339561026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1730,7 +1731,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 76252907}
   - {fileID: 53654307}
   - {fileID: 571363658}
   - {fileID: 277780818}
@@ -1978,7 +1978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 15.337, y: -180}
+  m_AnchoredPosition: {x: 0.00002670288, y: 446}
   m_SizeDelta: {x: 843.61, y: 300.6855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402360918
@@ -4480,7 +4480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000030517, y: -405}
+  m_AnchoredPosition: {x: 0.000030517, y: -1105}
   m_SizeDelta: {x: 1041.414, y: 42.542}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &980472867
@@ -4585,7 +4585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -19.263, y: -399}
+  m_AnchoredPosition: {x: -19.263, y: 273}
   m_SizeDelta: {x: 523.17, y: 271.0686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1010038102
@@ -7082,7 +7082,7 @@ MonoBehaviour:
   txt_Reward: {fileID: 1671899667}
   txt_Name: {fileID: 419309043}
   timeRemaining: 5
-  timerIsRunning: 0
+  WinnerTimerIsRunning: 0
   timerText: {fileID: 391033752}
   timeStart: 0
   btn_1: {fileID: 1220592292}

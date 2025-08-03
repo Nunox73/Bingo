@@ -122,34 +122,41 @@ public class Game_Buttons : MonoBehaviour
         }
         else if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Pausa")
         {
-            SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Jogar";
-            bingogamewithplayers.btn_Pause();
-            GlobalVariables.pausa = true;
-            SerialReader.instance.btn_1.gameObject.SetActive(false);
-            SerialReader.instance.btn_2.gameObject.SetActive(false);
-            SerialReader.instance.btn_4.gameObject.SetActive(false);
-            SerialReader.instance.btn_5.gameObject.SetActive(false);
+            if (bingogamewithplayers.winnerCanvas.activeSelf == true)
+            {
+                if (bingogamewithplayers.txt_Reward.text == "Linha")
+                {
+                    GlobalVariables.linha = bingogamewithplayers.timerText.text;
+
+                }
+                else if (bingogamewithplayers.txt_Reward.text == "Bingo")
+                {
+                    GlobalVariables.bingo = bingogamewithplayers.timerText.text;
+                }
+                bingogamewithplayers.WinnerTimerIsRunning = false;
+                bingogamewithplayers.timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
+                bingogamewithplayers.winnerCanvas.SetActive(false);
+                bingogamewithplayers.gameCanvas.SetActive(true);
+                bingogamewithplayers.DrawBingoNumber();
+
+            }
+            else
+            {
+                SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Jogar";
+                bingogamewithplayers.btn_Pause();
+                GlobalVariables.pausa = true;
+                SerialReader.instance.btn_1.gameObject.SetActive(false);
+                SerialReader.instance.btn_2.gameObject.SetActive(false);
+                SerialReader.instance.btn_4.gameObject.SetActive(false);
+                SerialReader.instance.btn_5.gameObject.SetActive(false);
+            }
         }
         else if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Seguinte")
         {
             scenemanagerscript.LoadScene("6.Questi");
         }
 
-        if (bingogamewithplayers.winnerCanvas.activeSelf == true)
-        {
-            if (bingogamewithplayers.txt_Reward.text == "Linha")
-            {
-                GlobalVariables.linha = bingogamewithplayers.timerText.text;
-            }
-            else if (bingogamewithplayers.txt_Reward.text == "Bingo")
-            {
-                GlobalVariables.bingo = bingogamewithplayers.timerText.text;
-            }
-            bingogamewithplayers.timerIsRunning = false;
-            bingogamewithplayers.timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
-            bingogamewithplayers.winnerCanvas.SetActive(false);
-            bingogamewithplayers.gameCanvas.SetActive(true);
-        }
+        
 
     }
 
