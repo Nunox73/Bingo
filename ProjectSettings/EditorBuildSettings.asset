@@ -24,7 +24,10 @@ EditorBuildSettings:
     path: Assets/Scenes/4.Gamer.unity
     guid: 7374e9df8c5cd344dbd41fe5d9aa622f
   - enabled: 1
-    path: Assets/Scenes/6.Questi.unity
+    path: Assets/Scenes/6.Questi_intro.unity
     guid: 36e7ab7994ffd7c47871e3253ed6d9f0
+  - enabled: 1
+    path: Assets/Scenes/6.Questi_1.unity
+    guid: 8894fa617d78bb946b3467525c18f2a0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
