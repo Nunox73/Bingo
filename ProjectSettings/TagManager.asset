@@ -31,6 +31,14 @@ TagManager:
   - 5_game_btn_4
   - 5_game_btn_5
   - 5_game_btn_6
+  - 6_questi_btn_6
+  - 6_questi_intro_btn_6
+  - 6_questi2_btn_1
+  - 6_questi2_btn_2
+  - 6_questi2_btn_3
+  - 6_questi2_btn_4
+  - 6_questi2_btn_5
+  - 6_questi2_btn_6
   layers:
   - Default
   - TransparentFX

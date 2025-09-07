@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 
 
-public class Questi_Buttons_6 : MonoBehaviour
+public class Questi_Buttons_6_1 : MonoBehaviour
 {
 
  
@@ -22,7 +22,7 @@ public class Questi_Buttons_6 : MonoBehaviour
 
         // Set all the scene buttons in SerialReader
 
-        SerialReader.instance.btn_6 = GameObject.FindWithTag("6_questi_intro_btn_6")?.GetComponent<Button>();
+        SerialReader.instance.btn_6 = GameObject.FindWithTag("6_questi_btn_6")?.GetComponent<Button>();
 
     }
 
