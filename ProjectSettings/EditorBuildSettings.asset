@@ -32,5 +32,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/6.Questi_2.unity
     guid: 98a8ae54b5415aa4c8e3837658afca13
+  - enabled: 1
+    path: Assets/Scenes/7.End.unity
+    guid: 12ac3afd5878b9644bfe89d8b806b649
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

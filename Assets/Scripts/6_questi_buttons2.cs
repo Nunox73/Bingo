@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class Questi_Buttons_6_2 : MonoBehaviour
 {
 
+    public SceneManagerScript scenemanagerscript;
+    
     [Header("Question")]
     public TextMeshProUGUI TextQuestion;
     private int QuestionID = 0;
@@ -76,6 +78,10 @@ public class Questi_Buttons_6_2 : MonoBehaviour
         if (QuestionID <= 14)
         {
             TextQuestion.text = GlobalVariables.TAMQuest[QuestionID, 0];
+        }
+        else
+        {
+            scenemanagerscript.LoadScene("7.End");
         }
         
     }

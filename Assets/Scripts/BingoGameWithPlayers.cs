@@ -305,7 +305,9 @@ public class BingoGameWithPlayers : MonoBehaviour
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(true);
                 // Leds
-                SerialReader.instance.SendData("9O\n"); // All Off
+                for (int i = 0; i < 8; i++){ // Turn off all the buttons
+                    SerialReader.instance.SendData(i + "O\n"); //Turn all buttons Off
+                }
                 SerialReader.instance.SendData("6G\n"); // 6 Green
                 gameCanvas.SetActive(false);
                 WinnerTimerIsRunning = true;
@@ -479,6 +481,8 @@ public class BingoGameWithPlayers : MonoBehaviour
         //btn_yes.SetActive(false);
         //btn_play.SetActive(true);
         //btn_pause.SetActive(false);
+        SerialReader.instance.SendData("3R\n"); //Turn 3 Red
+        SerialReader.instance.SendData("6G\n"); //Turn 6 Green
     }
 
     public void btn_disable()
@@ -508,7 +512,9 @@ public class BingoGameWithPlayers : MonoBehaviour
 
         if (GlobalVariables.buttonsConnected)
         {
-            SerialReader.instance.SendData("9R\n"); //Activate the Red Button
+            for (int i = 0; i < 8; i++){ // Turn off all the buttons
+                SerialReader.instance.SendData(i + "R\n"); //Turn all buttons red
+            }
             SerialReader.instance.SendData(GlobalVariables.greenButton + "G\n"); //Activate the Green Button
         }
 
