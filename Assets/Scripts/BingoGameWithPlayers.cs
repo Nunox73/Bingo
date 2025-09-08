@@ -264,25 +264,28 @@ public class BingoGameWithPlayers : MonoBehaviour
                 drawnText.enabled = false;
                 DrawnTimerText.text = "";
                 //Change the btn_6 teste to "Seguinte"
-                    SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Seguinte";
-                    SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().fontSize = 20;
+                SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Seguinte";
+                SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().fontSize = 20;
                 // Disable all the game buttons
-                    SerialReader.instance.btn_1.gameObject.SetActive(false);
-                    SerialReader.instance.btn_2.gameObject.SetActive(false);
-                    SerialReader.instance.btn_4.gameObject.SetActive(false);
-                    SerialReader.instance.btn_5.gameObject.SetActive(false);
+                SerialReader.instance.btn_1.gameObject.SetActive(false);
+                SerialReader.instance.btn_2.gameObject.SetActive(false);
+                SerialReader.instance.btn_4.gameObject.SetActive(false);
+                SerialReader.instance.btn_5.gameObject.SetActive(false);
                 //btn_disable();
-                    ScoreRefreshButton.onClick.Invoke();
+                ScoreRefreshButton.onClick.Invoke();
+                // Turn on the buttons 3 and 6
+                SerialReader.instance.SendData("3R\n"); //Turn 3 Red
+                SerialReader.instance.SendData("6G\n"); //Turn 6 Green
             }
             else
             {
                 drawnNumberText.text = "Já sairam todos os números!";
                 drawnText.enabled = false;
                 // Disable all the game buttons
-                    SerialReader.instance.btn_1.gameObject.SetActive(false);
-                    SerialReader.instance.btn_2.gameObject.SetActive(false);
-                    SerialReader.instance.btn_4.gameObject.SetActive(false);
-                    SerialReader.instance.btn_5.gameObject.SetActive(false);
+                SerialReader.instance.btn_1.gameObject.SetActive(false);
+                SerialReader.instance.btn_2.gameObject.SetActive(false);
+                SerialReader.instance.btn_4.gameObject.SetActive(false);
+                SerialReader.instance.btn_5.gameObject.SetActive(false);
             }
 
         }
@@ -305,8 +308,8 @@ public class BingoGameWithPlayers : MonoBehaviour
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(true);
                 // Leds
-                for (int i = 0; i < 8; i++){ // Turn off all the buttons
-                    SerialReader.instance.SendData(i + "O\n"); //Turn all buttons Off
+                for (int i = 0; i < 8; i++){
+                    SerialReader.instance.SendData(i + "O\n"); // Turn off all the buttons
                 }
                 SerialReader.instance.SendData("6G\n"); // 6 Green
                 gameCanvas.SetActive(false);
@@ -489,8 +492,8 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
         
         if (GlobalVariables.buttonsConnected){          
-            for (int i = 0; i < 8; i++){ // Turn off all the buttons
-                SerialReader.instance.SendData(i + "O\n"); //Turn all the buttons off
+            for (int i = 0; i < 8; i++){ 
+                SerialReader.instance.SendData(i + "O\n"); // Turn off all the buttons
                 //Thread.Sleep(500); // Pauses for 0.5 second (500 milliseconds)
             }
         } else {
@@ -512,9 +515,12 @@ public class BingoGameWithPlayers : MonoBehaviour
 
         if (GlobalVariables.buttonsConnected)
         {
-            for (int i = 0; i < 8; i++){ // Turn off all the buttons
+            for (int i = 0; i < 6; i++)
+            {
                 SerialReader.instance.SendData(i + "R\n"); //Turn all buttons red
+                Thread.Sleep(50); // Pauses for 0.05 seconds
             }
+            SerialReader.instance.SendData("6G\n"); //Turn the Pause Button to Green
             SerialReader.instance.SendData(GlobalVariables.greenButton + "G\n"); //Activate the Green Button
         }
 

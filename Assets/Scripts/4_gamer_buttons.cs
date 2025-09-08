@@ -26,7 +26,6 @@ public class Gamer_Buttons_3 : MonoBehaviour
         tech_dificulty.text = GlobalVariables.tech_dificulty;
 
         // Turn all the buttons Green
-        //Serial.SendData("9G\n");
         SerialReader.instance.SendData("9G\n");
         SerialReader.instance.SendData("3R\n");
 

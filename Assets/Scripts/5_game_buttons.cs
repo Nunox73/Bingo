@@ -153,7 +153,7 @@ public class Game_Buttons : MonoBehaviour
         }
         else if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Seguinte")
         {
-            scenemanagerscript.LoadScene("6.Questi");
+            scenemanagerscript.LoadScene("6.Questi_intro");
         }
 
         
