@@ -24,10 +24,11 @@ public class Gamer_Buttons : MonoBehaviour
         age.text = GlobalVariables.age.ToString();
         sex.text = GlobalVariables.sex;
 
-        // Turn all the buttons Green
-        //Serial.SendData("9G\n");
-        SerialReader.instance.SendData("9G\n");
-        SerialReader.instance.SendData("3R\n");
+        // Button LEDs
+        for (int i = 0; i < 6; i++){
+            SerialReader.instance.SendData(i + "G\n"); // Turn Green
+        }
+        SerialReader.instance.SendData("3R\n"); // Turn Red
 
         // Set all the scene buttons in SerialReader
         SerialReader.instance.btn_1 = GameObject.FindWithTag("2_gamer_btn_1")?.GetComponent<Button>();

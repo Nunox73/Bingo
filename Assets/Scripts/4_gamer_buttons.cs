@@ -25,9 +25,11 @@ public class Gamer_Buttons_3 : MonoBehaviour
         tech_use.text = GlobalVariables.tech_use;
         tech_dificulty.text = GlobalVariables.tech_dificulty;
 
-        // Turn all the buttons Green
-        SerialReader.instance.SendData("9G\n");
-        SerialReader.instance.SendData("3R\n");
+        // Button LEDs
+        for (int i = 0; i < 6; i++){
+            SerialReader.instance.SendData(i + "G\n"); // Turn Green
+        }
+        SerialReader.instance.SendData("3R\n"); // Turn Red
 
         // Set all the scene buttons in SerialReader
         SerialReader.instance.btn_1 = GameObject.FindWithTag("4_gamer_btn_1")?.GetComponent<Button>();

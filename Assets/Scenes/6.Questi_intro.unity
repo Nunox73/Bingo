@@ -2193,7 +2193,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Por favor, indique se concorda ou n\xE3o com as seguintes frases, tendo
-    em conta a sua experi\xEAncia a jogar bingo com os bot\xF5es. \r"
+    em conta a sua experi\xEAncia a jogar bingo. \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
