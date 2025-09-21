@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GlobalVariables
 {
-    public static bool buttonsConnected = true; //check if the hardware buttons are connected
+    public static bool buttonsConnected = false; //check if the hardware buttons are connected
 
     public static int greenButton; // Green button ID
     public static int redButton; // Red button ID
@@ -33,7 +33,7 @@ public static class GlobalVariables
                                                            //GlobalVariables.timeToClick[i, 0] = GlobalVariables.lastButton; // Button ID
                                                            //GlobalVariables.timeToClick[i, 1] = int.Parse(drawnNumberText.text); // Bingo Number at the present time
                                                            //GlobalVariables.timeToClick[i, 2] = drawnTimerRemaining; // Time remaining
-                                                           //GlobalVariables.timeToClick[i, 3] = YesNo; // Color Buton 0 = Red; 1 = Green
+                                                           //GlobalVariables.timeToClick[i, 3] = YesNo; // Color Button 0 = Red; 1 = Green
     // TAM Variables
     public static string[,] TAMQuest = new string[15, 2]
 {

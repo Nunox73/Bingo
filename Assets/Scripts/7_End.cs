@@ -18,11 +18,12 @@ public class End_Buttons_7 : MonoBehaviour
     {
 
         // Save Game Variables
+        string sheetName = "Player";
         string playerName = "João";
         int score = 120;
         float timePlayed = 85.3f;
 
-        googleSender.SendPlayerData(playerName, score, timePlayed);
+        googleSender.SendPlayerData(sheetName,playerName, score, timePlayed);
 
         if (GlobalVariables.buttonsConnected)
         {
