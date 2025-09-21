@@ -19,11 +19,33 @@ public class End_Buttons_7 : MonoBehaviour
 
         // Save Game Variables
         string sheetName = "Player";
-        string playerName = "João";
-        int score = 120;
-        float timePlayed = 85.3f;
+        string PlayerID = GlobalVariables.PlayerID;
+        string Age = GlobalVariables.age.ToString();
+        string Sex = GlobalVariables.sex;
+        string EstadoCivil = GlobalVariables.estadoCivil;
+        string Residence = GlobalVariables.residence;
+        string TechUse = GlobalVariables.tech_use;
+        string TechDificulty = GlobalVariables.tech_dificulty;
+        string Q1 = GlobalVariables.TAMQuest[0, 1].ToString();
+        string Q2 = GlobalVariables.TAMQuest[1, 1].ToString();
+        string Q3 = GlobalVariables.TAMQuest[2, 1].ToString();
+        string Q4 = GlobalVariables.TAMQuest[3, 1].ToString();
+        string Q5 = GlobalVariables.TAMQuest[4, 1].ToString();
+        string Q6 = GlobalVariables.TAMQuest[5, 1].ToString();
+        string Q7 = GlobalVariables.TAMQuest[6, 1].ToString();
+        string Q8 = GlobalVariables.TAMQuest[7, 1].ToString();
+        string Q9 = GlobalVariables.TAMQuest[8, 1].ToString();
+        string Q10 = GlobalVariables.TAMQuest[9, 1].ToString();
+        string Q11 = GlobalVariables.TAMQuest[10, 1].ToString();
+        string Q12 = GlobalVariables.TAMQuest[11, 1].ToString();
+        string Q13 = GlobalVariables.TAMQuest[12, 1].ToString();
+        string Q14 = GlobalVariables.TAMQuest[13, 1].ToString();
+        string Q15 = GlobalVariables.TAMQuest[14, 1].ToString();
 
-        googleSender.SendPlayerData(sheetName,playerName, score, timePlayed);
+
+        googleSender.SendPlayerData(sheetName,
+            PlayerID, Age, Sex, EstadoCivil, Residence, TechUse, TechDificulty,
+            Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14,Q15);
 
         if (GlobalVariables.buttonsConnected)
         {

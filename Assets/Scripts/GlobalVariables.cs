@@ -15,6 +15,8 @@ public static class GlobalVariables
     public static float winnerCanvasTimer = 15f;
 
     // 2.Gamer Variables
+
+    public static string PlayerID = "0"; 
     public static int age = 74; // Player Age
     public static string sex = "Feminino"; // Player Sex: Masculino, Feminino
 

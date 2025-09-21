@@ -1,9 +1,11 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 
 public class Gamer_Buttons : MonoBehaviour
@@ -25,7 +27,8 @@ public class Gamer_Buttons : MonoBehaviour
         sex.text = GlobalVariables.sex;
 
         // Button LEDs
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i < 6; i++)
+        {
             SerialReader.instance.SendData(i + "G\n"); // Turn Green
         }
         SerialReader.instance.SendData("3R\n"); // Turn Red
@@ -38,7 +41,8 @@ public class Gamer_Buttons : MonoBehaviour
         SerialReader.instance.btn_5 = GameObject.FindWithTag("2_gamer_btn_5")?.GetComponent<Button>();
         SerialReader.instance.btn_6 = GameObject.FindWithTag("2_gamer_btn_6")?.GetComponent<Button>();
 
-
+        // Set the PlayerID
+        GlobalVariables.PlayerID = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
     }
 
     // Update is called once per frame
