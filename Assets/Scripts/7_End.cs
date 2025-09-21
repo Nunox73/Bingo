@@ -11,18 +11,31 @@ public class End_Buttons_7 : MonoBehaviour
 
     public SceneManagerScript scenemanagerscript;
 
+    public GoogleSheetsSender googleSender;
+
     // Start is called before the first frame update
     void Start()
     {
 
+        // Save Game Variables
+        string playerName = "João";
+        int score = 120;
+        float timePlayed = 85.3f;
 
-        // Turn all the buttons Red
-        SerialReader.instance.SendData("9R\n");
-        SerialReader.instance.SendData("6G\n");
+        googleSender.SendPlayerData(playerName, score, timePlayed);
 
-        // Set all the scene buttons in SerialReader
+        if (GlobalVariables.buttonsConnected)
+        {
+            // Leds
+            SerialReader.instance.SendData("9O\n"); // All Off
+            SerialReader.instance.SendData("6G\n"); // 6 Green
 
-        SerialReader.instance.btn_6 = GameObject.FindWithTag("7_End_btn_6")?.GetComponent<Button>();
+            // Set all the scene buttons in SerialReader
+            SerialReader.instance.btn_6 = GameObject.FindWithTag("7_End_btn_6")?.GetComponent<Button>();
+        }
+        
+
+
 
     }
 

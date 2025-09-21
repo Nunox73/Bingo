@@ -20,10 +20,10 @@ public class Questi_Buttons_6_2 : MonoBehaviour
     {
 
 
-        // Turn all the buttons Red
+        // LEDs
         SerialReader.instance.SendData("9G\n");
-        SerialReader.instance.SendData("6R\n");
-        SerialReader.instance.SendData("7R\n");
+        SerialReader.instance.SendData("6O\n");
+        SerialReader.instance.SendData("7O\n");
 
         // Set all the scene buttons in SerialReader
         SerialReader.instance.btn_1 = GameObject.FindWithTag("6_questi2_btn_1")?.GetComponent<Button>();

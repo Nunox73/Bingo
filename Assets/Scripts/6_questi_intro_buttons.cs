@@ -16,9 +16,9 @@ public class Questi_Buttons_6 : MonoBehaviour
     {
 
 
-        // Turn all the buttons Red
-        SerialReader.instance.SendData("9R\n");
-        SerialReader.instance.SendData("6G\n");
+        // Leds
+        SerialReader.instance.SendData("9O\n"); // All Off
+        SerialReader.instance.SendData("6G\n"); // 6 Green
 
         // Set all the scene buttons in SerialReader
 
