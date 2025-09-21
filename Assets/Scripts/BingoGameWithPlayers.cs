@@ -26,6 +26,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public Text txt_vamos;
     public GameObject PlayerCardsParent;
     public GameObject Scores;
+    public GoogleSheetsSender googleSender; // Send GameData do Google Sheets
     
 
     [Header("Sounds")]
@@ -392,6 +393,9 @@ public class BingoGameWithPlayers : MonoBehaviour
         //int score = PlayerPrefs.GetInt("Player1Score") - 1;
         //PlayerPrefs.SetInt("Player1Score", score);
 
+        // Enviar dados para GameData
+        googleSender.SendGameData(
+            GlobalVariables.PlayerID, "ButtonID", drawnNumberText.ToString(), drawnTimerRemaining.ToString(), "Green", PlayerPrefs.GetInt("Player1Score").ToString());
 
         // Validate all the other players cards numbers
         markNumbers();

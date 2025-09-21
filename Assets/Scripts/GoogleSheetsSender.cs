@@ -7,58 +7,62 @@ public class Response
 {
     public string status;
     public string message;
-    public string timestamp; // retornado pelo Apps Script
+    public string timestamp;
 }
 
 public class GoogleSheetsSender : MonoBehaviour
 {
-    [Header("URL do Web App do Google Apps Script")]
-    public string webAppUrl ="https://script.google.com/macros/s/AKfycbx1O0e3MEgnMcRdojYZp81dKwkQdbzwhKe9QJWabTRytyhff1T2kQo-XfhDuCrvYxu-uw/exec";
+    [Header("Google Web App URL")]
+    public string webAppUrl = "https://script.google.com/macros/s/AKfycbx1O0e3MEgnMcRdojYZp81dKwkQdbzwhKe9QJWabTRytyhff1T2kQo-XfhDuCrvYxu-uw/exec";
 
     /// <summary>
-    /// Envia os dados do jogador para o Google Sheets.
-    /// Todos os parâmetros são strings.
+    /// Envia dados para a aba GameData
     /// </summary>
-    public void SendPlayerData(
-        string sheetName,
+    public void SendGameData(
         string PlayerID,
-        string Age,
-        string Sex,
-        string MaritalStatus,
-        string Residence,
-        string TechUse,
-        string TechDificulty,
-        string Q1, string Q2, string Q3, string Q4, string Q5,
-        string Q6, string Q7, string Q8, string Q9, string Q10,
-        string Q11, string Q12, string Q13, string Q14, string Q15
-    )
-    {
-        StartCoroutine(PostPlayerData(
-            sheetName, PlayerID, Age, Sex, MaritalStatus, Residence, TechUse, TechDificulty,
-            Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15
-        ));
-    }
-
-    private IEnumerator PostPlayerData(
-        string sheetName,
-        string PlayerID,
-        string Age,
-        string Sex,
-        string MaritalStatus,
-        string Residence,
-        string TechUse,
-        string TechDificulty,
-        string Q1, string Q2, string Q3, string Q4, string Q5,
-        string Q6, string Q7, string Q8, string Q9, string Q10,
-        string Q11, string Q12, string Q13, string Q14, string Q15
-    )
+        string ButtonID,
+        string DrawnNumber,
+        string TimeRemaining,
+        string ButtonColor,
+        string Score)
     {
         WWWForm form = new WWWForm();
 
-        // Nome da aba
-        form.AddField("sheetName", sheetName);
+        // Identifica a ação no Google Apps Script
+        form.AddField("action", "SaveGameData");
 
-        // Dados do jogador
+        // Campos enviados
+        form.AddField("PlayerID", PlayerID);
+        form.AddField("ButtonID", ButtonID);
+        form.AddField("DrawnNumber", DrawnNumber);
+        form.AddField("TimeRemaining", TimeRemaining);
+        form.AddField("ButtonColor", ButtonColor);
+        form.AddField("Score", Score);
+
+        StartCoroutine(PostForm(form));
+    }
+
+    /// <summary>
+    /// Envia dados para a aba PlayerData
+    /// </summary>
+    public void SendPlayerData(
+        string PlayerID,
+        string Age,
+        string Sex,
+        string MaritalStatus,
+        string Residence,
+        string TechUse,
+        string TechDificulty,
+        string Q1, string Q2, string Q3, string Q4, string Q5,
+        string Q6, string Q7, string Q8, string Q9, string Q10,
+        string Q11, string Q12, string Q13, string Q14, string Q15)
+    {
+        WWWForm form = new WWWForm();
+
+        // Identifica a ação no Google Apps Script
+        form.AddField("action", "SavePlayerData");
+
+        // Dados básicos
         form.AddField("PlayerID", PlayerID);
         form.AddField("Age", Age);
         form.AddField("Sex", Sex);
@@ -67,7 +71,7 @@ public class GoogleSheetsSender : MonoBehaviour
         form.AddField("TechUse", TechUse);
         form.AddField("TechDificulty", TechDificulty);
 
-        // Respostas Q1 - Q15
+        // Questões Q1 a Q15
         form.AddField("Q1", Q1);
         form.AddField("Q2", Q2);
         form.AddField("Q3", Q3);
@@ -84,36 +88,36 @@ public class GoogleSheetsSender : MonoBehaviour
         form.AddField("Q14", Q14);
         form.AddField("Q15", Q15);
 
+        StartCoroutine(PostForm(form));
+    }
+
+    /// <summary>
+    /// Faz o POST para o Google Apps Script e processa a resposta JSON
+    /// </summary>
+    private IEnumerator PostForm(WWWForm form)
+    {
         using (UnityWebRequest www = UnityWebRequest.Post(webAppUrl, form))
         {
             yield return www.SendWebRequest();
 
+            string raw = www.downloadHandler.text;
+            Debug.Log("Resposta raw do Google Sheets: " + raw);
+
             if (www.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError("Erro ao enviar: " + www.error);
-                Debug.Log("Resposta raw: " + www.downloadHandler?.text);
             }
             else
             {
-                string raw = www.downloadHandler.text;
-                Debug.Log("Resposta raw: " + raw);
-
-                // Tenta desserializar JSON
                 try
                 {
                     Response resp = JsonUtility.FromJson<Response>(raw);
-                    if (resp != null && !string.IsNullOrEmpty(resp.status))
-                    {
-                        Debug.Log($"Status: {resp.status} | Mensagem: {resp.message} | Timestamp: {resp.timestamp}");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Resposta JSON inválida ou sem campos esperados.");
-                    }
+                    Debug.Log($"Status: {resp.status} | Mensagem: {resp.message} | Timestamp: {resp.timestamp}");
                 }
                 catch (System.Exception ex)
                 {
                     Debug.LogError("Erro ao parsear JSON: " + ex.Message);
+                    Debug.LogError("Resposta completa recebida: " + raw);
                 }
             }
         }

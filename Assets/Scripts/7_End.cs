@@ -18,7 +18,7 @@ public class End_Buttons_7 : MonoBehaviour
     {
 
         // Save Game Variables
-        string sheetName = "Player";
+        //string sheetName = "Player";
         string PlayerID = GlobalVariables.PlayerID;
         string Age = GlobalVariables.age.ToString();
         string Sex = GlobalVariables.sex;
@@ -43,7 +43,7 @@ public class End_Buttons_7 : MonoBehaviour
         string Q15 = GlobalVariables.TAMQuest[14, 1].ToString();
 
 
-        googleSender.SendPlayerData(sheetName,
+        googleSender.SendPlayerData(
             PlayerID, Age, Sex, EstadoCivil, Residence, TechUse, TechDificulty,
             Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14,Q15);
 
