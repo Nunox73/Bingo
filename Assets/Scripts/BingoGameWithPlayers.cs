@@ -308,13 +308,14 @@ public class BingoGameWithPlayers : MonoBehaviour
                 txt_Reward.text = "Bingo";
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(true);
+                
+                gameCanvas.SetActive(false);
+                WinnerTimerIsRunning = true;
                 // Leds
                     SerialReader.instance.SendData("9O\n"); // All Off
                     SerialReader.instance.SendData("6G\n"); // 6 Green
-                gameCanvas.SetActive(false);
-                WinnerTimerIsRunning = true;
                 drawnTimerIsRunning = false;
-                btn_pause.SetActive(false);
+                //btn_pause.SetActive(false);
                 break; // Stop checking after the first winner is found
             }
             if (player.CheckForLine() && playerLineWinner == 0)
