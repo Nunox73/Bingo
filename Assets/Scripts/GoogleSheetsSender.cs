@@ -22,7 +22,7 @@ public class GoogleSheetsSender : MonoBehaviour
         string PlayerID,
         string ButtonID,
         string DrawnNumber,
-        string TimeRemaining,
+        string TimeSpend,
         string ButtonColor,
         string Score)
     {
@@ -35,7 +35,7 @@ public class GoogleSheetsSender : MonoBehaviour
         form.AddField("PlayerID", PlayerID);
         form.AddField("ButtonID", ButtonID);
         form.AddField("DrawnNumber", DrawnNumber);
-        form.AddField("TimeRemaining", TimeRemaining);
+        form.AddField("TimeSpend", TimeSpend);
         form.AddField("ButtonColor", ButtonColor);
         form.AddField("Score", Score);
 

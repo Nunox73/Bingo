@@ -42,7 +42,7 @@ public class Gamer_Buttons : MonoBehaviour
         SerialReader.instance.btn_6 = GameObject.FindWithTag("2_gamer_btn_6")?.GetComponent<Button>();
 
         // Set the PlayerID
-        GlobalVariables.PlayerID = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        GlobalVariables.PlayerID = DateTime.Now.ToString("yyyyMMddHHmmss");
     }
 
     // Update is called once per frame

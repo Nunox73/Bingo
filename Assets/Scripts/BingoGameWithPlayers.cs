@@ -41,7 +41,7 @@ public class BingoGameWithPlayers : MonoBehaviour
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
     public float drawnTimerRemaining = GlobalVariables.drawnTimer;  // Set initial time
     public bool drawnTimerIsRunning = false;
-    public TextMeshProUGUI DrawnTimerText;  // Assign your TextMeshPro UI element
+    public TextMeshProUGUI DrawnTimerText;  // 
 
     [Header("Winner Settings")]
     public int playerLineWinner = 0; // Player that made the first line
@@ -143,8 +143,8 @@ public class BingoGameWithPlayers : MonoBehaviour
             {
                 //Debug.Log("Drawn Time has run out!");
                 btn_disable();
-                ResetDrawnTimer();
                 NoButton();
+                ResetDrawnTimer();
                 DrawBingoNumber();
             }
         }
@@ -394,8 +394,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         //PlayerPrefs.SetInt("Player1Score", score);
 
         // Enviar dados para GameData
-        googleSender.SendGameData(
-            GlobalVariables.PlayerID, "ButtonID", drawnNumberText.ToString(), drawnTimerRemaining.ToString(), "Green", PlayerPrefs.GetInt("Player1Score").ToString());
+        GoogleGameData("Green");
 
         // Validate all the other players cards numbers
         markNumbers();
@@ -404,6 +403,14 @@ public class BingoGameWithPlayers : MonoBehaviour
         // Drawn a new number
         DrawBingoNumber();
         
+    }
+
+    public void GoogleGameData(string color)
+    {
+        // Enviar dados para GameData
+        googleSender.SendGameData(
+            GlobalVariables.PlayerID, GlobalVariables.lastButton.ToString() , drawnNumberText.text.ToString(), (GlobalVariables.drawnTimer-drawnTimerRemaining).ToString(), color, PlayerPrefs.GetInt("Player1Score").ToString());
+
     }
 
     public void NoButton()
@@ -416,12 +423,14 @@ public class BingoGameWithPlayers : MonoBehaviour
             AddTimeClicks(1);
         }
         markNumbers();
+        // Enviar dados para GameData
+        GoogleGameData("Red");
         // Check Winning Conditions
         CheckWinConditions();
         // Drawn a new number
         DrawBingoNumber();
-        
-        
+
+
     }
 
 
