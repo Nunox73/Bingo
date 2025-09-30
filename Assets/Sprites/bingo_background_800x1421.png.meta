@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bingo_background_800x1421_0: -8251268015941417750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
