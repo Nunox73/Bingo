@@ -26,7 +26,7 @@ public class Gamer_Buttons_3 : MonoBehaviour
         tech_dificulty.text = GlobalVariables.tech_dificulty;
 
         // Button LEDs
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i <= 6; i++){
             SerialReader.instance.SendData(i + "G\n"); // Turn Green
         }
         SerialReader.instance.SendData("3R\n"); // Turn Red

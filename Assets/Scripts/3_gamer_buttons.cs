@@ -26,7 +26,7 @@ public class Gamer_Buttons_2 : MonoBehaviour
         residence.text = GlobalVariables.residence;
 
         // Button LEDs
-        for (int i = 0; i < 6; i++){
+        for (int i = 0; i <= 6; i++){
             SerialReader.instance.SendData(i + "G\n"); // Turn Green
         }
         SerialReader.instance.SendData("3R\n"); // Turn Red

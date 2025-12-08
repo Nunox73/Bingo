@@ -27,7 +27,7 @@ public class Gamer_Buttons : MonoBehaviour
         sex.text = GlobalVariables.sex;
 
         // Button LEDs
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i <= 6; i++)
         {
             SerialReader.instance.SendData(i + "G\n"); // Turn Green
         }
