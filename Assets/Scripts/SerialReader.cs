@@ -3,6 +3,7 @@ using System.IO.Ports;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Collections.Concurrent;
 
 
@@ -27,10 +28,14 @@ public class SerialReader : MonoBehaviour
 
     public static SerialReader instance; // Singleton instance
 
+    public TextMeshProUGUI COM;
+
+    [Header("Serial Config")]
     SerialPort serialPort = new SerialPort("COM10", 9600, Parity.None, 8, StopBits.One);
     private Thread serialThread;
     private bool isRunning = true;
     private string receivedData = "";
+
 
      [Header("Buttons")]
     public Button btn_1;
@@ -61,6 +66,10 @@ public class SerialReader : MonoBehaviour
 
     void Start()
     {
+        string[] ports = SerialPort.GetPortNames();
+        Debug.Log("[ArduinoAutoDetector] Portas encontradas: " + string.Join(", ", ports));
+        COM.text = string.Join(", ", ports);
+
         serialPort.ReadTimeout = 100; // Prevents indefinite blocking
 
         try
@@ -192,7 +201,7 @@ public class SerialReader : MonoBehaviour
             if (!string.IsNullOrEmpty(receivedData))
             {
                 Debug.Log("Received: " + receivedData);
-                if (receivedData == " Start") // First instance
+                if (receivedData == "UNO_VITALSPIRIT_READY") // First instance
                 {
                     //SerialReader.instance.SendData(0 + "O\n"); //Turn all the buttons off
                 }
@@ -223,5 +232,6 @@ public class SerialReader : MonoBehaviour
             Debug.LogError("Serial port not open!");
         }
     }
+
 
 }
