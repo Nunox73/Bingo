@@ -37,23 +37,22 @@ public static class GlobalVariables
                                                            //GlobalVariables.timeToClick[i, 2] = drawnTimerRemaining; // Time remaining
                                                            //GlobalVariables.timeToClick[i, 3] = YesNo; // Color Button 0 = Red; 1 = Green
     // TAM Variables
-    public static string[,] TAMQuest = new string[15, 2]
+    public static string[,] TAMQuest = new string[14, 2]
 {
-    { "Este jogo ajuda a mexer-me mais.", "0" },
-    { "Sinto-me melhor depois de jogar.", "0" },
-    { "Acho que este jogo é bom para a minha saúde.", "0" },
-    { "Jogar ajuda-me a manter a mente ativa.", "0" },
-    { "É fácil usar os botões para jogar.", "0" },
-    { "Percebo bem o que tenho de fazer durante o jogo.", "0" },
-    { "Consigo jogar sozinho(a), sem ajuda.", "0" },
-    { "O jogo é simples e claro.", "0" },
-    { "Gosto de jogar este bingo.", "0" },
-    { "O jogo é divertido.", "0" },
-    { "Gosto de jogar com outras pessoas.", "0" },
-    { "Quero jogar mais vezes.", "0" },
-    { "Estou satisfeito(a) com este jogo.", "0" },
-    { "Recomendaria este jogo a outras pessoas.", "0" },
-    { "Gostava que houvesse mais jogos como este.", "0" }
+    { "Jogar este bingo ajuda-me a exercitar a mente.", "0" },
+    { "Sinto que o jogo me mantém ativo(a) e concentrado(a).", "0" },
+    { "O bingo digital é útil para o meu bem-estar.", "0" },
+    { "Jogar este bingo ajuda-me a passar o tempo de forma agradável.", "0" },
+    { "Foi fácil aprender a jogar este bingo.", "0" },
+    { "Os botões e o ecrã são fáceis de perceber e de usar.", "0" },
+    { "É fácil controlar o jogo e responder quando aparece um número.", "0" },
+    { "Consigo ver bem as letras, os números e os botões.", "0" },
+    { "Gosto de jogar este bingo digital.", "0" },
+    { "Sinto-me bem e relaxado(a) quando jogo.", "0" },
+    { "Jogar este bingo é uma experiência agradável para mim.", "0" },
+    { "Gostaria de jogar este bingo outra vez.", "0" },
+    { "Jogaria mais vezes se estivesse disponível.", "0" },
+    { "Recomendaria este jogo a outras pessoas da minha idade.", "0" }
 };
 
 

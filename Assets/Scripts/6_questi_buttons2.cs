@@ -75,7 +75,7 @@ public class Questi_Buttons_6_2 : MonoBehaviour
     {
         QuestionID = QuestionID + 1;
         // Set Next Question
-        if (QuestionID <= 14)
+        if (QuestionID < 14)
         {
             TextQuestion.text = GlobalVariables.TAMQuest[QuestionID, 0];
         }

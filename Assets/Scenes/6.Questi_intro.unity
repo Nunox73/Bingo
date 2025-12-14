@@ -1092,8 +1092,8 @@ GameObject:
   - component: {fileID: 754622961}
   - component: {fileID: 754622960}
   m_Layer: 5
-  m_Name: 6_questi_intro_btn_6
-  m_TagString: 4_gamer_btn_6
+  m_Name: btn_6
+  m_TagString: 6_questi_intro_btn_6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

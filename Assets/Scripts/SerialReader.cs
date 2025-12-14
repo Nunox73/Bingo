@@ -87,6 +87,9 @@ public class SerialReader : MonoBehaviour
             Debug.LogError("Serial Port Error: " + e.Message);
             GlobalVariables.buttonsConnected = false;
         }
+        
+        // Button LEDs
+        LEDS();
     }
 
     void ReadSerialData()
@@ -235,15 +238,6 @@ public class SerialReader : MonoBehaviour
         }
     }
 
-    public void btn_3_click()
-    {
-        Debug.LogError("btn_3_click ");
-    }
-
-    public void btn_6_click()
-    {
-        Debug.LogError("btn_6_click ");
-    }
     private void OnEnable()
 {
     SceneManager.sceneLoaded += OnSceneLoaded;
@@ -264,11 +258,23 @@ private void RebindButtonsForCurrentScene()
     // Exemplo: tenta encontrar botões por TAG (ajusta as tags às tuas cenas)
     
     btn_3 = GameObject.FindWithTag("1_main_btn_3")?.GetComponent<Button>();
-
     btn_6 = GameObject.FindWithTag("1_main_btn_6")?.GetComponent<Button>();
+
+    LEDS();
    
 
     Debug.Log($"[SerialReader] Rebind feito. btn_1={(btn_1!=null)} btn_2={(btn_2!=null)} btn_3={(btn_3!=null)} ...");
 }
+
+private void LEDS()
+    {
+        // Button LEDs
+        for (int i = 0; i <= 6; i++)
+        {
+            SerialReader.instance.SendData(i + "O\n"); // Turn OFF
+        }
+        SerialReader.instance.SendData("3R\n"); // Turn Red
+        SerialReader.instance.SendData("6G\n"); // Turn Green
+    }
 
 }
