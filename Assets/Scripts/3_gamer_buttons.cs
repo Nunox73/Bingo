@@ -52,12 +52,11 @@ public class Gamer_Buttons_2 : MonoBehaviour
     }
     public void btn_1_click()
     {
-        // Recua para o próximo estado
-        if (estadoIndex > 0)
-        {
+        // Recua para o estado anterior
+
             estadoIndex = (estadoIndex - 1) % estados.Length;
             estadoCivil.text = estados[estadoIndex];
-        }   
+         
     }
     public void btn_2_click()
     {

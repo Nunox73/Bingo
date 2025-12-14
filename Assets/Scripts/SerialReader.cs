@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Concurrent;
+using UnityEngine.SceneManagement;
+
 
 
 // Instructions:
@@ -233,5 +235,40 @@ public class SerialReader : MonoBehaviour
         }
     }
 
+    public void btn_3_click()
+    {
+        Debug.LogError("btn_3_click ");
+    }
+
+    public void btn_6_click()
+    {
+        Debug.LogError("btn_6_click ");
+    }
+    private void OnEnable()
+{
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+private void OnDisable()
+{
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
+private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    RebindButtonsForCurrentScene();
+}
+
+private void RebindButtonsForCurrentScene()
+{
+    // Exemplo: tenta encontrar botões por TAG (ajusta as tags às tuas cenas)
+    
+    btn_3 = GameObject.FindWithTag("1_main_btn_3")?.GetComponent<Button>();
+
+    btn_6 = GameObject.FindWithTag("1_main_btn_6")?.GetComponent<Button>();
+   
+
+    Debug.Log($"[SerialReader] Rebind feito. btn_1={(btn_1!=null)} btn_2={(btn_2!=null)} btn_3={(btn_3!=null)} ...");
+}
 
 }
