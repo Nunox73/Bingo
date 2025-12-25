@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
                         break; // This will exit the loop as intended
                     } else
                     {
-                        Debug.Log("");
+                        //Debug.Log("");
                     }
                     row++; // Increment row
                 }
@@ -462,7 +462,7 @@ public class Player : MonoBehaviour
 
 void Start()
     {
-        txt_player_name.text = PlayerPrefs.GetString("Player1Name");
+        
     }
 
 }
