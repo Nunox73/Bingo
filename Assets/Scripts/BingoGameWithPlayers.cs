@@ -523,76 +523,89 @@ public class BingoGameWithPlayers : MonoBehaviour
     {
 
         int[] options = { 1, 2, 4, 5 };
-        int randomIndex = Random.Range(0, options.Length); // Random.Range is inclusive min, exclusive max
-        GlobalVariables.greenButton = options[randomIndex];
+
+        int greenIndex = Random.Range(0, options.Length);
+        GlobalVariables.greenButton = options[greenIndex];
+
+        // escolher um índice 0..options.Length-2 e “saltar” o greenIndex
+        int redIndex = Random.Range(0, options.Length - 1);
+        if (redIndex >= greenIndex) redIndex++;
+
+        GlobalVariables.redButton = options[redIndex];
+
+
 
         //btn_disable(); // Disable all buttons
 
         if (GlobalVariables.buttonsConnected)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                SerialReader.instance.SendData(i + "R\n"); //Turn all buttons red
-                Thread.Sleep(50); // Pauses for 0.05 seconds
-            }
             SerialReader.instance.SendData("6G\n"); //Turn the Pause Button to Green
             SerialReader.instance.SendData(GlobalVariables.greenButton + "G\n"); //Activate the Green Button
+            SerialReader.instance.SendData(GlobalVariables.redButton + "R\n"); //Activate the Red Button
         }
 
-        foreach (int button in options)
-        {
-            if (GlobalVariables.greenButton == button)
-            {
-                switch (button)
-                {
-                    case 1:
-                        SerialReader.instance.btn_1.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_1.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
-                        break;
-                    case 2:
-                        SerialReader.instance.btn_2.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_2.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
-                        break;
-                    case 4:
-                        SerialReader.instance.btn_4.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_4.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
-                        break;
-                    case 5:
-                        SerialReader.instance.btn_5.GetComponent<Image>().color = new Color(0.29f, 0.75f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_5.GetComponentInChildren<TextMeshProUGUI>().text = "Tenho";
-                        break;
-                }
-            }
-            else
-            {
-                switch (button)
-                {
-                    case 1:
-                        SerialReader.instance.btn_1.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_1.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
-                        break;
-                    case 2:
-                        SerialReader.instance.btn_2.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_2.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
-                        break;
-                    case 4:
-                        SerialReader.instance.btn_4.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_4.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
-                        break;
-                    case 5:
-                        SerialReader.instance.btn_5.GetComponent<Image>().color = new Color(0.75f, 0.52f, 0.09f, 0.68f);
-                        SerialReader.instance.btn_5.GetComponentInChildren<TextMeshProUGUI>().text = "Não Tenho";
-                        break;
-                }
-            }
+        Color greenColor = new Color(0.29f, 0.75f, 0.09f, 0.68f);
+        Color redColor   = new Color(0.75f, 0.52f, 0.09f, 0.68f);
 
-        }
-
-        SerialReader.instance.btn_1.gameObject.SetActive(true);
-        SerialReader.instance.btn_2.gameObject.SetActive(true);
-        SerialReader.instance.btn_4.gameObject.SetActive(true);
-        SerialReader.instance.btn_5.gameObject.SetActive(true);
+        DisableAllOptionButtons();
         
+        // Botão verde
+        ApplyButtonUI(GlobalVariables.greenButton, greenColor, "Tenho");
+
+        // Botão vermelho
+        ApplyButtonUI(GlobalVariables.redButton, redColor, "Não Tenho");
+
+
+        
+        
+    }
+
+    void DisableAllOptionButtons()
+    {
+        if (SerialReader.instance == null) return;
+
+        Button[] buttons =
+        {
+            SerialReader.instance.btn_1,
+            SerialReader.instance.btn_2,
+            SerialReader.instance.btn_4,
+            SerialReader.instance.btn_5
+        };
+
+        foreach (var btn in buttons)
+        {
+            if (btn != null)
+                btn.gameObject.SetActive(false);
+        }
+    }
+
+    void ApplyButtonUI(int buttonId, Color color, string label)
+    {
+        if (SerialReader.instance == null)
+            return;
+
+        Button btn = buttonId switch
+        {
+            1 => SerialReader.instance.btn_1,
+            2 => SerialReader.instance.btn_2,
+            4 => SerialReader.instance.btn_4,
+            5 => SerialReader.instance.btn_5,
+            _ => null
+        };
+
+        if (btn == null)
+        {
+            Debug.LogWarning($"[UI] Botão {buttonId} não encontrado ou não rebindado.");
+            return;
+        }
+
+        var img = btn.GetComponent<Image>();
+        var txt = btn.GetComponentInChildren<TextMeshProUGUI>();
+
+        if (img != null) img.color = color;
+        if (txt != null) txt.text = label;
+
+        btn.gameObject.SetActive(true);
     }
 
 
