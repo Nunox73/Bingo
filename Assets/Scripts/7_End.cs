@@ -40,7 +40,7 @@ public class End_Buttons_7 : MonoBehaviour
         string Q12 = GlobalVariables.TAMQuest[11, 1].ToString();
         string Q13 = GlobalVariables.TAMQuest[12, 1].ToString();
         string Q14 = GlobalVariables.TAMQuest[13, 1].ToString();
-        string Q15 = GlobalVariables.TAMQuest[14, 1].ToString();
+        string Q15 = "teste";
 
 
         googleSender.SendPlayerData(

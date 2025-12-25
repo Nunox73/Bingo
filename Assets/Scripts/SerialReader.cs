@@ -330,7 +330,7 @@ public class SerialReader : MonoBehaviour
 
         for (int i = 0; i <= 6; i++)
         {
-            SendData(i + "O\n"); // Turn OFF
+            SendData(i + "O\n"); // Turn All OFF
         }
         SendData("3R\n"); // Turn Red
         SendData("6G\n"); // Turn Green
