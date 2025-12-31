@@ -417,7 +417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252a87daf24ae494093e6d563976cb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_Name: {fileID: 0}
   txt_grid_player1name: {fileID: 1495888545}
   txt_grid_player2name: {fileID: 2109913721}
   txt_grid_player3name: {fileID: 207757582}
@@ -2942,7 +2941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 612, y: 22}
+  m_AnchoredPosition: {x: 632, y: 36}
   m_SizeDelta: {x: 345.2031, y: 115.0113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265869145
@@ -2998,7 +2997,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 6.Questi_intro
+          m_StringArgument: 7.End
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1265869146

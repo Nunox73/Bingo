@@ -6,7 +6,7 @@ using TMPro;
 public class SetPlayersPrefs : MonoBehaviour
 {
     // Start is cal
-    public TMP_InputField Player_Name;
+    //public TMP_InputField Player_Name;
 
     
     [Header("Score Board")]
@@ -40,9 +40,10 @@ public class SetPlayersPrefs : MonoBehaviour
         PlayerPrefs.SetInt("Player3Score", 0);
         PlayerPrefs.SetInt("Linha",0);
         PlayerPrefs.SetInt("Bingo",0);
+        PlayerPrefs.SetInt("PlayAgain",0);
         PlayerPrefs.Save();
         
-        UpdateBoard();
+        //UpdateBoard();
 
     }
 
@@ -50,7 +51,7 @@ public class SetPlayersPrefs : MonoBehaviour
     {
         
         // Reset Game and Player Preferences
-        PlayerPrefs.SetString("Player1Name", "Nome do Jogador?");
+        PlayerPrefs.SetString("Player1Name", "Eu");
         PlayerPrefs.SetString("Player2Name", "Joaquim");
         PlayerPrefs.SetString("Player3Name", "Maria");
         PlayerPrefs.SetInt("Player1Score", 0);
@@ -61,12 +62,13 @@ public class SetPlayersPrefs : MonoBehaviour
         PlayerPrefs.SetInt("Player3Total", 0);
         PlayerPrefs.SetInt("Linha",0);
         PlayerPrefs.SetInt("Bingo",0);
+        PlayerPrefs.SetInt("PlayAgain",1);
         PlayerPrefs.Save();
 
-        Player_Name.text = PlayerPrefs.GetString("Player1Name");
+        //Player_Name.text = PlayerPrefs.GetString("Player1Name");
        
 
-        UpdateBoard();
+        //UpdateBoard();
     }
 
 

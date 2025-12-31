@@ -35,6 +35,12 @@ public class Game_Buttons : MonoBehaviour
         SerialReader.instance.btn_5.gameObject.SetActive(false);
         SerialReader.instance.btn_6 = GameObject.FindWithTag("5_game_btn_6")?.GetComponent<Button>();
 
+        if(PlayerPrefs.GetInt("PlayAgain").ToString()=="1")
+        {
+            btn_6_click();
+            PlayerPrefs.SetInt("PlayAgain",0);
+            PlayerPrefs.Save();
+        }
     }
 
     // Update is called once per frame
@@ -109,6 +115,7 @@ public class Game_Buttons : MonoBehaviour
             }
         }
     }
+    
     public void btn_6_click()
     {
         GlobalVariables.lastButton = 6;
@@ -118,6 +125,7 @@ public class Game_Buttons : MonoBehaviour
             bingogamewithplayers.txt_vamos.gameObject.SetActive(false); // Remove the initial message
             bingogamewithplayers.PlayerCardsParent.gameObject.SetActive(true);
             bingogamewithplayers.Scores.gameObject.SetActive(true);
+            bingogamewithplayers.drawnTimerRemaining = GlobalVariables.drawnTimer;
             bingogamewithplayers.btn_Start();
         }
         else if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Pausa")
@@ -153,7 +161,15 @@ public class Game_Buttons : MonoBehaviour
         }
         else if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Seguinte")
         {
-            scenemanagerscript.LoadScene("6.Questi_intro");
+            if (bingogamewithplayers.winnerCanvas.activeSelf == true)
+            {
+                bingogamewithplayers.winnerCanvas.SetActive(false);
+                bingogamewithplayers.gameCanvas.SetActive(true);
+            } else
+            {
+                scenemanagerscript.LoadScene("6.Questi_intro");
+            }
+            
         }
 
         

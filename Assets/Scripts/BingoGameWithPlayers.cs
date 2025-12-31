@@ -11,10 +11,8 @@ using Unity.VisualScripting;
 public class BingoGameWithPlayers : MonoBehaviour
 {
 
-
     private List<int> bingoNumbers = new List<int>(); // All bingo numbers (1-90)
     private List<int> drawnNumbers = new List<int>(); // Numbers that have been drawn
-
 
     public int numberOfPlayers = 3; // Set the number of players
     public int numberOfCards = 1; // Set the number of cards per player
@@ -78,9 +76,17 @@ public class BingoGameWithPlayers : MonoBehaviour
         GeneratePlayers(); // Generate players and their cards
         winnerCanvas.SetActive(false);
         gameCanvas.SetActive(true);
-        // Disable Player 1 buttons
-        //btn_disable(); managed by the buttons script
         drawnText.enabled = false;
+        if (PlayerPrefs.GetInt("PlayAgain") == 1)
+        {
+
+            SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Jogar";
+
+            
+            PlayerPrefs.SetInt("PlayAgain",0);
+            PlayerPrefs.Save();
+        }
+
     }
     void Update()
     {
@@ -118,6 +124,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         }
 
         // Time to press the Jogar button
+        
         if (SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text == "Jogar")
         {
             GlobalVariables.timeToStart += Time.deltaTime;
@@ -306,7 +313,6 @@ public class BingoGameWithPlayers : MonoBehaviour
                 txt_Reward.text = "Bingo";
                 timeRemaining = GlobalVariables.winnerCanvasTimer; // Reset the winner timer time
                 winnerCanvas.SetActive(true);
-                
                 gameCanvas.SetActive(false);
                 WinnerTimerIsRunning = true;
                 // Leds

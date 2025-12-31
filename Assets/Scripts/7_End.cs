@@ -10,6 +10,7 @@ public class End_Buttons_7 : MonoBehaviour
 {
 
     public SceneManagerScript scenemanagerscript;
+    public SetPlayersPrefs SetPlayersPrefsScript ;
 
     public GoogleSheetsSender googleSender;
 
@@ -51,9 +52,11 @@ public class End_Buttons_7 : MonoBehaviour
         {
             // Leds
             SerialReader.instance.SendData("9O\n"); // All Off
+            SerialReader.instance.SendData("3G\n"); // 3 Green
             SerialReader.instance.SendData("6G\n"); // 6 Green
 
             // Set all the scene buttons in SerialReader
+            SerialReader.instance.btn_3 = GameObject.FindWithTag("7_End_btn_3")?.GetComponent<Button>();
             SerialReader.instance.btn_6 = GameObject.FindWithTag("7_End_btn_6")?.GetComponent<Button>();
         }
         
@@ -68,6 +71,11 @@ public class End_Buttons_7 : MonoBehaviour
 
     }
 
+    public void btn_3_click()
+    {
+        SetPlayersPrefsScript.Reset();
+        scenemanagerscript.LoadScene("5.Game");
+    }
     public void btn_6_click()
     {
         scenemanagerscript.LoadScene("1.Main");
