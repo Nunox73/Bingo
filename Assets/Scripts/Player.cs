@@ -24,6 +24,48 @@ public class Player : MonoBehaviour
     private int NumRow1;
     private int NumRow2;
 
+    [Header("Sounds")]
+    public AudioSource sfxSource;
+    public AudioClip correctClip;
+    public AudioClip wrongClip;
+
+    void Awake()
+    {
+        if (sfxSource == null) sfxSource = GetComponent<AudioSource>();
+        if (sfxSource == null) sfxSource = gameObject.AddComponent<AudioSource>();
+
+        sfxSource.playOnAwake = false;
+        sfxSource.spatialBlend = 0f;
+        sfxSource.volume = 1f;
+        sfxSource.mute = false;
+
+        // Carregar clips automaticamente (uma vez por instância)
+        if (correctClip == null) correctClip = Resources.Load<AudioClip>("SFX/correct");
+        if (wrongClip == null)   wrongClip   = Resources.Load<AudioClip>("SFX/error");
+
+        Debug.Log($"[Player {PlayerID}] audio loaded: correct={(correctClip!=null)} wrong={(wrongClip!=null)}");
+    }
+
+
+    void PlayCorrectNumber()
+    {
+        
+        if (PlayerID == 1)
+        {
+            if (correctClip != null)
+                sfxSource.PlayOneShot(correctClip, 1f);
+        }
+        
+    }
+
+
+    void PlayWrongNumber()
+    {
+        if (wrongClip != null)
+            sfxSource.PlayOneShot(wrongClip, 1f);
+    }
+
+
     // Initializes the player with a Bingo card
     public void InitializePlayer(int id)
     {
@@ -376,6 +418,7 @@ public class Player : MonoBehaviour
                         cardNumberTexts[index].color = Color.red;  // Mark the number
                         PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") + 1);
                         PlayerPrefs.Save();
+                        PlayCorrectNumber();
                         haveit = true;
                     }
 
@@ -385,6 +428,7 @@ public class Player : MonoBehaviour
         if  (haveit == false && PlayerID.ToString() == "1"){ // In case of a false "Tenho"
             PlayerPrefs.SetInt("Player" + PlayerID.ToString() + "Score", PlayerPrefs.GetInt("Player" + PlayerID.ToString() + "Score") - 1);
             PlayerPrefs.Save();
+            PlayWrongNumber();
         }
     }
     

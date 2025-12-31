@@ -31,8 +31,6 @@ public class BingoGameWithPlayers : MonoBehaviour
 
     [Header("Sounds")]
     public AudioSource NewNumberSound;
-    public AudioSource CorrectNumber;
-    public AudioSource WrongNumber;
     public AudioSource BingoARolar;
 
     [Header("Drawn Settings")]
