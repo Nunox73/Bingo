@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 46d94ecd3ffe9ad4fa10b16b5c60ca5d
+guid: 444913a70bbac6b4ca5c4d8af622d929
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6714558081450065864
+    second: Bingo_Logo (2)_0
+  - first:
+      213: -1809887338914389154
+    second: Bingo_Logo (2)_1
+  - first:
+      213: -6564551554286567974
+    second: Bingo_Logo (2)_2
+  - first:
+      213: 7074367539254603444
+    second: Bingo_Logo (2)_3
+  - first:
+      213: -1003840576149222655
+    second: Bingo_Logo (2)_4
+  - first:
+      213: 6773896268618201517
+    second: Bingo_Logo (2)_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +126,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bingo_Logo (2)_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1
+        width: 872
+        height: 1023
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 830c07b000911d2a0800000000000000
+      internalID: -6714558081450065864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bingo_Logo (2)_1
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 443
+        width: 147
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53e780fd0df1e6e0800000000000000
+      internalID: -1809887338914389154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bingo_Logo (2)_2
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 443
+        width: 55
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: addb201542706e4a0800000000000000
+      internalID: -6564551554286567974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bingo_Logo (2)_3
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 439
+        width: 153
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be23db9bc33d2260800000000000000
+      internalID: 7074367539254603444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bingo_Logo (2)_4
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 0
+        width: 613
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10b80878054a112f0800000000000000
+      internalID: -1003840576149222655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bingo_Logo (2)_5
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 443
+        width: 145
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da9f45444c6b10e50800000000000000
+      internalID: 6773896268618201517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +263,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bingo_Logo (2)_0: -6714558081450065864
+      Bingo_Logo (2)_1: -1809887338914389154
+      Bingo_Logo (2)_2: -6564551554286567974
+      Bingo_Logo (2)_3: 7074367539254603444
+      Bingo_Logo (2)_4: -1003840576149222655
+      Bingo_Logo (2)_5: 6773896268618201517
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

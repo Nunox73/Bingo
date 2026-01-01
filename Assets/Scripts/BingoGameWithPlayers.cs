@@ -37,7 +37,10 @@ public class BingoGameWithPlayers : MonoBehaviour
     public Text allDrawnNumbersText; // UI text for displaying all drawn numbers
     public float drawnTimerRemaining = GlobalVariables.drawnTimer;  // Set initial time
     public bool drawnTimerIsRunning = false;
-    public TextMeshProUGUI DrawnTimerText;  // 
+    public TextMeshProUGUI DrawnTimerText;
+    public VideoPlaybackUI VideoPlayback;
+    public RawImage Video_RollingBalls;
+
 
     [Header("Winner Settings")]
     public int playerLineWinner = 0; // Player that made the first line
@@ -77,15 +80,7 @@ public class BingoGameWithPlayers : MonoBehaviour
         winnerCanvas.SetActive(false);
         gameCanvas.SetActive(true);
         drawnText.enabled = false;
-        if (PlayerPrefs.GetInt("PlayAgain") == 1)
-        {
 
-            SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Jogar";
-
-            
-            PlayerPrefs.SetInt("PlayAgain",0);
-            PlayerPrefs.Save();
-        }
 
     }
     void Update()
@@ -130,7 +125,7 @@ public class BingoGameWithPlayers : MonoBehaviour
             GlobalVariables.timeToStart += Time.deltaTime;
         }
 
-
+        
         // Check if the Drawn timer is running and Winner Canvas is off
         if (drawnTimerIsRunning && !WinnerTimerIsRunning && winnerCanvas.activeSelf == false)
         {
@@ -229,7 +224,9 @@ public class BingoGameWithPlayers : MonoBehaviour
                 SerialReader.instance.btn_2.gameObject.SetActive(false);
                 SerialReader.instance.btn_4.gameObject.SetActive(false);
                 SerialReader.instance.btn_5.gameObject.SetActive(false);
-            // Play Sound
+            // Play Sound & Video
+            Video_RollingBalls.enabled = true;
+            VideoPlayback.Play();
             BingoARolar.Play();
             bool CheckIfIsPlaying() => BingoARolar.isPlaying;
             // Waits for the audiosource finish playing the audio
@@ -237,6 +234,11 @@ public class BingoGameWithPlayers : MonoBehaviour
 
             NewNumberSound.Play();
 
+            // Disable Video animation
+            VideoPlayback.Stop();
+            VideoPlayback.videoPlayer.time = 0;
+            Video_RollingBalls.enabled = false;
+            //RollingBalls.SetActive(false);
 
             int randomIndex = Random.Range(0, bingoNumbers.Count);
             int drawnNumber = bingoNumbers[randomIndex];
@@ -432,6 +434,8 @@ public class BingoGameWithPlayers : MonoBehaviour
         GoogleGameData("Red");
         // Check Winning Conditions
         CheckWinConditions();
+        //
+        //RollingBalls.SetActive(true);
         // Drawn a new number
         DrawBingoNumber();
 
@@ -492,12 +496,23 @@ public class BingoGameWithPlayers : MonoBehaviour
             btn_enable();
             //btn_yes.SetActive(true);
         }
+        
+        if (PlayerPrefs.GetInt("PlayAgain") == 1)
+        {
+
+            SerialReader.instance.btn_6.GetComponentInChildren<TextMeshProUGUI>().text = "Jogar";
+
+            
+            PlayerPrefs.SetInt("PlayAgain",0);
+            PlayerPrefs.Save();
+        }
         //btn_play.SetActive(false);
         //btn_pause.SetActive(true);
     }
 
     public void btn_Pause()
     {
+
         drawnTimerIsRunning = false;
         btn_disable();
         //btn_yes.SetActive(false);
